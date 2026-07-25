@@ -54,7 +54,8 @@ export const Route = createFileRoute("/courses/$slug")({
 });
 
 function CoursePage() {
-  const { course } = Route.useLoaderData();
+  const { course } = Route.useLoaderData() as { course: import("@/data/courses").Course };
+
   const related = courses
     .filter((c) => c.category === course.category && c.slug !== course.slug)
     .slice(0, 3);
