@@ -20,6 +20,7 @@ export const Route = createFileRoute("/courses/$slug")({
     if (!course) throw notFound();
     return { course };
   },
+
   head: ({ loaderData }) => {
     const c = loaderData?.course;
     return {
