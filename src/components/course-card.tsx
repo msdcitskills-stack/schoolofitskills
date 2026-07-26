@@ -7,8 +7,6 @@ export function CourseCard({ course, index = 0 }: { course: Course; index?: numb
     <Link
       to="/courses/$slug"
       params={{ slug: course.slug }}
-      target="_blank"
-      rel="noopener noreferrer"
       className="group corner-glow glare-card glow-ring bulge notch relative flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 text-card-foreground"
       style={{ animationDelay: `${index * 40}ms` }}
     >
