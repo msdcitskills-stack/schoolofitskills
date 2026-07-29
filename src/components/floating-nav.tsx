@@ -59,7 +59,9 @@ export function FloatingNav() {
                   to={l.to}
                   onMouseEnter={() => setHovered(l.to)}
                   className={`relative z-10 block rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                    active ? "text-primary-foreground" : "text-foreground/80 hover:text-foreground"
+                    active || hovered === l.to
+                      ? "text-secondary-foreground"
+                      : "text-foreground/80 hover:text-foreground"
                   }`}
                 >
                   {hovered === l.to && (
@@ -74,14 +76,9 @@ export function FloatingNav() {
                       aria-hidden
                     />
                   )}
-                  <span
-                    className={
-                      hovered === l.to && !active ? "text-secondary-foreground" : undefined
-                    }
-                  >
-                    {l.label}
-                  </span>
+                  <span>{l.label}</span>
                 </Link>
+
               </li>
             );
           })}
