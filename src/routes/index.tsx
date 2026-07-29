@@ -4,6 +4,8 @@ import soisLogo from "@/assets/sois-logo.png.asset.json";
 import msdcLogo from "@/assets/msdc-logo.png.asset.json";
 import { DotBackground } from "@/components/dot-background";
 import { MagneticButton } from "@/components/magnetic-button";
+import { EncryptedText } from "@/components/encrypted-text";
+
 import { Card3D, Card3DItem } from "@/components/card-3d";
 import { TechMarquee } from "@/components/tech-marquee";
 import { CourseCard } from "@/components/course-card";
