@@ -44,16 +44,22 @@ function Home() {
                 MANIPAL SKILL DEVELOPMENT CENTRE
               </div>
               <h1 className="mt-5 text-balance text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl md:text-7xl">
-                Empowering future generations with{" "}
+                <EncryptedText text="Empowering future generations with " speed={26} />
                 <span className="relative inline-block">
-                  <span className="relative z-10">cutting-edge</span>
+                  <EncryptedText
+                    text="cutting-edge"
+                    className="relative z-10"
+                    speed={26}
+                    revealDelay={40}
+                  />
                   <span
                     className="absolute inset-x-0 bottom-1 -z-0 h-4 rounded-full bg-primary/60"
                     aria-hidden
                   />
                 </span>{" "}
-                IT education.
+                <EncryptedText text="IT education." speed={26} />
               </h1>
+
               <p className="mt-6 max-w-xl text-lg text-muted-foreground">
                 A curated catalogue of 30+ certified programs — from Power BI, Full Stack and
                 AI/ML, to Tally, Cyber Security and IT for school children.
