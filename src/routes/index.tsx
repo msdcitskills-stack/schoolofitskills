@@ -298,33 +298,44 @@ function BentoCard({
   large?: boolean;
 }) {
   return (
-    <Link
-      to={to}
-      className={`group corner-glow glare-card glow-ring bulge relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-6 text-card-foreground ${className}`}
-    >
-      <div className="relative z-10 flex items-center justify-between">
-        <span className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary text-secondary-foreground">
-          {icon}
-        </span>
-        <span className="rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
-          {count} courses
-        </span>
-      </div>
-      <div className="relative z-10">
-        <h3
-          className={`mt-8 text-balance font-bold tracking-tight ${
-            large ? "text-3xl md:text-4xl" : "text-xl"
-          }`}
-        >
-          {title}
-        </h3>
-        <p className={`mt-2 text-sm text-muted-foreground ${large ? "max-w-md" : ""}`}>
-          {desc}
-        </p>
-        <div className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary opacity-0 transition-opacity group-hover:opacity-100">
-          Explore <ArrowRight className="h-3.5 w-3.5" />
-        </div>
-      </div>
-    </Link>
+    <Card3D className={className} intensity={large ? 8 : 12}>
+      <Link
+        to={to}
+        className="group corner-glow glare-card glow-ring relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-shadow duration-300 hover:shadow-2xl"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            background:
+              "radial-gradient(360px circle at var(--mx,50%) var(--my,50%), color-mix(in oklab, var(--primary) 18%, transparent), transparent 70%)",
+          }}
+          aria-hidden
+        />
+        <Card3DItem z={50} className="relative z-10 flex items-center justify-between">
+          <span className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary text-secondary-foreground transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
+            {icon}
+          </span>
+          <span className="rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
+            {count} courses
+          </span>
+        </Card3DItem>
+        <Card3DItem z={30} className="relative z-10">
+          <h3
+            className={`mt-8 text-balance font-bold tracking-tight ${
+              large ? "text-3xl md:text-4xl" : "text-xl"
+            }`}
+          >
+            {title}
+          </h3>
+          <p className={`mt-2 text-sm text-muted-foreground ${large ? "max-w-md" : ""}`}>
+            {desc}
+          </p>
+          <div className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary opacity-0 transition-all duration-300 group-hover:opacity-100">
+            Explore
+            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+          </div>
+        </Card3DItem>
+      </Link>
+    </Card3D>
   );
 }
