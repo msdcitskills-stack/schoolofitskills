@@ -37,15 +37,18 @@ export function TechMarquee() {
         {items.map((s, i) => (
           <div
             key={i}
-            className="group/chip glass flex shrink-0 items-center gap-3 rounded-full px-5 py-3 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.06] hover:shadow-[0_10px_30px_-10px_color-mix(in_oklab,var(--color-glow)_80%,transparent)]"
+            className="group/chip glass flex shrink-0 items-center gap-3 rounded-lg border border-dashed border-border/80 px-5 py-3 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-[0_10px_30px_-10px_color-mix(in_oklab,var(--color-glow)_80%,transparent)]"
+            style={{ borderStyle: "dotted" }}
           >
             <span
-              className="grid h-8 w-8 place-items-center rounded-full bg-secondary text-sm font-bold text-secondary-foreground transition-transform duration-300 group-hover/chip:rotate-12"
+              className="grid h-8 w-8 place-items-center rounded-md bg-secondary text-sm font-bold text-secondary-foreground transition-transform duration-300 group-hover/chip:rotate-12 group-hover/chip:scale-110"
               aria-hidden
             >
               {s.icon}
             </span>
-            <span className="text-sm font-semibold tracking-tight">{s.name}</span>
+            <span className="text-sm font-semibold tracking-tight transition-colors duration-300 group-hover/chip:text-primary">
+              {s.name}
+            </span>
             <span className="h-1.5 w-1.5 rounded-full bg-primary opacity-0 transition-opacity duration-300 group-hover/chip:opacity-100" />
           </div>
         ))}
