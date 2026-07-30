@@ -57,7 +57,7 @@ function RedditIcon(props: React.SVGProps<SVGSVGElement>) {
 export function FloatingDock() {
   const [hovered, setHovered] = useState<number | null>(null);
   return (
-    <div className="fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 md:block">
+    <div className="fixed right-3 top-1/2 z-40 -translate-y-1/2 sm:right-5">
       <div
         className="glass flex flex-col items-center gap-2 rounded-full px-3 py-4 shadow-[0_20px_60px_-25px_color-mix(in_oklab,var(--color-foreground)_60%,transparent)]"
         onMouseLeave={() => setHovered(null)}
