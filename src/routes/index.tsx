@@ -62,23 +62,33 @@ function Home() {
                 <EncryptedText text="IT education." speed={26} />
               </h1>
 
-              <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-                A curated catalogue of 30+ certified programs — from Power BI, Full Stack and
-                AI/ML, to Tally, Cyber Security and IT for school children.
-              </p>
+              <EncryptedText
+                as="p"
+                className="mt-6 block max-w-xl text-lg text-muted-foreground"
+                text="A curated catalogue of 30+ certified programs — from Power BI, Full Stack and AI/ML, to Tally, Cyber Security and IT for school children."
+                speed={22}
+                revealDelay={10}
+              />
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link to="/courses">
                   <MagneticButton className="bg-primary text-primary-foreground">
-                    Browse all courses <ArrowRight className="h-4 w-4" />
+                    <EncryptedText
+                      text="Browse all courses"
+                      speed={24}
+                      revealDelay={26}
+                      scrambleClassName="text-primary-foreground"
+                    />
+                    <ArrowRight className="h-4 w-4" />
                   </MagneticButton>
                 </Link>
                 <Link
                   to="/contact"
                   className="story-link text-sm font-semibold text-foreground"
                 >
-                  Talk to us
+                  <EncryptedText text="Talk to us" speed={24} revealDelay={30} />
                 </Link>
               </div>
+
               <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
                 {[
                   { n: "30+", l: "Programs" },
