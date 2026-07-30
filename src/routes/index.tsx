@@ -46,20 +46,15 @@ function Home() {
                 MANIPAL SKILL DEVELOPMENT CENTRE
               </div>
               <h1 className="mt-5 text-balance text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl md:text-7xl">
-                <EncryptedText text="Empowering future generations with " speed={26} />
+                Empowering future generations with{" "}
                 <span className="relative inline-block">
-                  <EncryptedText
-                    text="cutting-edge"
-                    className="relative z-10"
-                    speed={26}
-                    revealDelay={40}
-                  />
+                  <span className="relative z-10">cutting-edge</span>
                   <span
                     className="absolute inset-x-0 bottom-1 -z-0 h-4 rounded-full bg-primary/60"
                     aria-hidden
                   />
                 </span>{" "}
-                <EncryptedText text="IT education." speed={26} />
+                IT education.
               </h1>
 
               <EncryptedText
@@ -72,12 +67,7 @@ function Home() {
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link to="/courses">
                   <MagneticButton className="bg-primary text-primary-foreground">
-                    <EncryptedText
-                      text="Browse all courses"
-                      speed={24}
-                      revealDelay={26}
-                      scrambleClassName="text-primary-foreground"
-                    />
+                    Browse all courses
                     <ArrowRight className="h-4 w-4" />
                   </MagneticButton>
                 </Link>
@@ -85,7 +75,7 @@ function Home() {
                   to="/contact"
                   className="story-link text-sm font-semibold text-foreground"
                 >
-                  <EncryptedText text="Talk to us" speed={24} revealDelay={30} />
+                  Talk to us
                 </Link>
               </div>
 
