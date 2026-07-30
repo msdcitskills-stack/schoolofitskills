@@ -57,16 +57,16 @@ function RedditIcon(props: React.SVGProps<SVGSVGElement>) {
 export function FloatingDock() {
   const [hovered, setHovered] = useState<number | null>(null);
   return (
-    <div className="fixed bottom-6 left-1/2 z-40 -translate-x-1/2">
+    <div className="fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 md:block">
       <div
-        className="glass flex items-end gap-2 rounded-full px-4 py-3 shadow-[0_20px_60px_-25px_color-mix(in_oklab,var(--color-foreground)_60%,transparent)]"
+        className="glass flex flex-col items-center gap-2 rounded-full px-3 py-4 shadow-[0_20px_60px_-25px_color-mix(in_oklab,var(--color-foreground)_60%,transparent)]"
         onMouseLeave={() => setHovered(null)}
       >
         {socials.map((s, i) => {
           const Icon = s.icon;
           const active = hovered === i;
           const near = hovered !== null && Math.abs(hovered - i) === 1;
-          const size = active ? "h-14 w-14" : near ? "h-11 w-11" : "h-10 w-10";
+          const size = active ? "h-13 w-13" : near ? "h-11 w-11" : "h-10 w-10";
           return (
             <a
               key={s.label}
@@ -79,8 +79,8 @@ export function FloatingDock() {
             >
               <Icon className="h-4 w-4" />
               <span
-                className={`pointer-events-none absolute -top-9 whitespace-nowrap rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground shadow-md transition-all duration-200 ${
-                  active ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+                className={`pointer-events-none absolute right-[calc(100%+0.75rem)] whitespace-nowrap rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground shadow-md transition-all duration-200 ${
+                  active ? "opacity-100 translate-x-0" : "opacity-0 translate-x-1"
                 }`}
               >
                 {s.label}
@@ -92,3 +92,4 @@ export function FloatingDock() {
     </div>
   );
 }
+
