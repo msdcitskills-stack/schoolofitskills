@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { CourseCard } from "@/components/course-card";
+import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { DotBackground } from "@/components/dot-background";
 import { courses, categoryMeta, type Course } from "@/data/courses";
@@ -54,7 +55,7 @@ function CoursesPage() {
   return (
     <div>
       <DotBackground>
-        <section className="mx-auto max-w-7xl px-6 pb-14 pt-6">
+        <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-14 pt-6">
           <SectionHeading
             eyebrow="Course catalogue"
             title="Every course, one place."
@@ -86,10 +87,10 @@ function CoursesPage() {
               />
             </label>
           </div>
-        </section>
+        </Reveal>
       </DotBackground>
 
-      <section className="mx-auto max-w-7xl px-6 pb-16">
+      <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-16">
         {cat === "all"
           ? filters
               .filter((f) => f.key !== "all")
@@ -126,7 +127,7 @@ function CoursesPage() {
             No courses match your search.
           </div>
         )}
-      </section>
+      </Reveal>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { DotBackground } from "@/components/dot-background";
 import soisLogo from "@/assets/sois-logo.png.asset.json";
@@ -29,7 +30,7 @@ function About() {
   return (
     <div>
       <DotBackground>
-        <section className="mx-auto max-w-6xl px-6 pb-16 pt-6">
+        <Reveal as="section" className="mx-auto max-w-6xl px-6 pb-16 pt-6">
           <SectionHeading
             eyebrow="About us"
             title="Empowering future generations with cutting-edge IT education."
@@ -61,10 +62,10 @@ function About() {
               </div>
             </div>
           </div>
-        </section>
+        </Reveal>
       </DotBackground>
 
-      <section className="mx-auto max-w-6xl px-6 pb-20">
+      <Reveal as="section" className="mx-auto max-w-6xl px-6 pb-20">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
@@ -83,7 +84,7 @@ function About() {
             </div>
           ))}
         </div>
-      </section>
+      </Reveal>
     </div>
   );
 }

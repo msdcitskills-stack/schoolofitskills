@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CourseCard } from "@/components/course-card";
+import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { DotBackground } from "@/components/dot-background";
 import { coursesByCategory, categoryMeta } from "@/data/courses";
@@ -43,24 +44,24 @@ function TallyPage() {
   return (
     <div>
       <DotBackground>
-        <section className="mx-auto max-w-7xl px-6 pb-14 pt-6">
+        <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-14 pt-6">
           <SectionHeading
             eyebrow="Tally certifications"
             title={categoryMeta.tally.label}
             description="Build a career in Accounts, Finance, Taxation and Banking — or run your own business — with a globally-recognised Tally credential."
           />
-        </section>
+        </Reveal>
       </DotBackground>
 
-      <section className="mx-auto max-w-7xl px-6 pb-8">
+      <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-8">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((c, i) => (
             <CourseCard key={c.slug} course={c} index={i} />
           ))}
         </div>
-      </section>
+      </Reveal>
 
-      <section className="mx-auto max-w-7xl px-6 pb-16">
+      <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-16">
         <div className="corner-glow glow-ring notch relative overflow-hidden rounded-[2rem] bg-secondary p-10 text-secondary-foreground md:p-14">
           <h3 className="max-w-2xl text-balance text-3xl font-bold tracking-tight md:text-4xl">
             Everything you get, from your first class to your certificate.
@@ -77,7 +78,7 @@ function TallyPage() {
             ))}
           </ul>
         </div>
-      </section>
+      </Reveal>
     </div>
   );
 }

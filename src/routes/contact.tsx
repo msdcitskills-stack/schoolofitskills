@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { DotBackground } from "@/components/dot-background";
 import { MagneticButton } from "@/components/magnetic-button";
@@ -27,16 +28,16 @@ function Contact() {
   return (
     <div>
       <DotBackground>
-        <section className="mx-auto max-w-5xl px-6 pb-16 pt-6">
+        <Reveal as="section" className="mx-auto max-w-5xl px-6 pb-16 pt-6">
           <SectionHeading
             eyebrow="Contact"
             title="Let's find the right course for you."
             description="Reach out and our counsellors will help you pick a program that matches your background and career goals."
           />
-        </section>
+        </Reveal>
       </DotBackground>
 
-      <section className="mx-auto max-w-5xl px-6 pb-20">
+      <Reveal as="section" className="mx-auto max-w-5xl px-6 pb-20">
         <div className="grid gap-5 md:grid-cols-3">
           <ContactCard
             icon={Mail}
@@ -88,7 +89,7 @@ function Contact() {
             </MagneticButton>
           </div>
         </form>
-      </section>
+      </Reveal>
     </div>
   );
 }

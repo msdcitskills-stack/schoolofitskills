@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CourseCard } from "@/components/course-card";
+import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { DotBackground } from "@/components/dot-background";
 import { coursesByCategory, categoryMeta } from "@/data/courses";
@@ -25,21 +26,21 @@ export const Route = createFileRoute("/internships")({
     return (
       <div>
         <DotBackground>
-          <section className="mx-auto max-w-7xl px-6 pb-14 pt-6">
+          <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-14 pt-6">
             <SectionHeading
               eyebrow="Internships"
               title={categoryMeta.internship.label}
               description="Short, intense, project-driven programs designed to make you industry-ready."
             />
-          </section>
+          </Reveal>
         </DotBackground>
-        <section className="mx-auto max-w-7xl px-6 pb-16">
+        <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-16">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {items.map((c, i) => (
               <CourseCard key={c.slug} course={c} index={i} />
             ))}
           </div>
-        </section>
+        </Reveal>
       </div>
     );
   },
