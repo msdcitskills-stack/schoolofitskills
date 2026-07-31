@@ -100,19 +100,13 @@ export function RevealGroup({
           key={i}
           className="motion-reduce:!opacity-100 motion-reduce:!transform-none"
           style={{
-            display: "contents",
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translate3d(0,0,0)" : offsets[direction],
+            transition: `opacity ${duration}ms cubic-bezier(0.22,1,0.36,1) ${Math.min(i, 12) * step}ms, transform ${duration}ms cubic-bezier(0.22,1,0.36,1) ${Math.min(i, 12) * step}ms`,
+            height: "100%",
           }}
         >
-          <div
-            style={{
-              opacity: inView ? 1 : 0,
-              transform: inView ? "translate3d(0,0,0)" : offsets[direction],
-              transition: `opacity ${duration}ms cubic-bezier(0.22,1,0.36,1) ${i * step}ms, transform ${duration}ms cubic-bezier(0.22,1,0.36,1) ${i * step}ms`,
-              height: "100%",
-            }}
-          >
-            {child}
-          </div>
+          {child}
         </div>
       ))}
     </div>
