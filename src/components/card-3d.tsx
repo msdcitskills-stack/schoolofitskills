@@ -18,6 +18,9 @@ export function Card3D({
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
     if (!el) return;
+    // Skip tilt on touch devices — it fights with scrolling and costs frames.
+    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches)
+      return;
     const rect = el.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -25,6 +28,7 @@ export function Card3D({
     el.style.setProperty("--mx", `${(x + 0.5) * 100}%`);
     el.style.setProperty("--my", `${(y + 0.5) * 100}%`);
   };
+
 
   const reset = () => {
     setHovered(false);

@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Reveal } from "@/components/reveal";
 import {
   ArrowLeft,
   ArrowRight,
@@ -64,7 +65,7 @@ function CoursePage() {
   return (
     <div>
       <DotBackground>
-        <section className="mx-auto max-w-6xl px-6 pb-14 pt-6">
+        <Reveal as="section" className="mx-auto max-w-6xl px-6 pb-14 pt-6">
           <Link
             to="/courses"
             className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -120,10 +121,10 @@ function CoursePage() {
               Call +91 91879 74688
             </a>
           </div>
-        </section>
+        </Reveal>
       </DotBackground>
 
-      <section className="mx-auto grid max-w-6xl gap-8 px-6 pb-16 lg:grid-cols-[1.4fr_1fr]">
+      <Reveal as="section" className="mx-auto grid max-w-6xl gap-8 px-6 pb-16 lg:grid-cols-[1.4fr_1fr]">
         <div className="corner-glow glow-ring rounded-3xl border border-border bg-card p-8">
           <div className="mb-6 flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-primary" />
@@ -177,10 +178,10 @@ function CoursePage() {
             </ul>
           </div>
         </aside>
-      </section>
+      </Reveal>
 
       {related.length > 0 && (
-        <section className="mx-auto max-w-7xl px-6 pb-8">
+        <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-8">
           <div className="mb-6 flex items-baseline justify-between">
             <h3 className="text-xl font-bold tracking-tight">Related courses</h3>
             <Link to="/courses" className="story-link text-sm font-semibold">
@@ -192,7 +193,7 @@ function CoursePage() {
               <CourseCard key={c.slug} course={c} index={i} />
             ))}
           </div>
-        </section>
+        </Reveal>
       )}
     </div>
   );

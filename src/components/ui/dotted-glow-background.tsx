@@ -37,8 +37,15 @@ export function DottedGlowBackground({
     let height = 0;
     let raf = 0;
     let start = performance.now();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let visible = true;
+    let last = 0;
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    const dpr = Math.min(window.devicePixelRatio || 1, coarse ? 1.5 : 2);
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Fewer, cheaper dots and a lower frame budget on phones/tablets.
+    const step = coarse ? gap * 1.4 : gap;
+    const fps = coarse ? 30 : 60;
+    const frameGap = 1000 / fps;
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
@@ -50,6 +57,10 @@ export function DottedGlowBackground({
     };
 
     const draw = (now: number) => {
+      raf = requestAnimationFrame(draw);
+      if (!visible) return;
+      if (now - last < frameGap) return;
+      last = now;
       const t = ((now - start) / 1000) * speed;
       ctx.clearRect(0, 0, width, height);
 
@@ -57,8 +68,8 @@ export function DottedGlowBackground({
       const cy = height / 2;
       const maxDist = Math.hypot(cx, cy) || 1;
 
-      for (let y = gap / 2; y < height; y += gap) {
-        for (let x = gap / 2; x < width; x += gap) {
+      for (let y = step / 2; y < height; y += step) {
+        for (let x = step / 2; x < width; x += step) {
           const dx = (x - cx) / maxDist;
           const dy = (y - cy) / maxDist;
           const d = Math.hypot(dx, dy);
@@ -91,7 +102,6 @@ export function DottedGlowBackground({
 
       ctx.globalAlpha = 1;
       ctx.shadowBlur = 0;
-      raf = requestAnimationFrame(draw);
     };
 
     resize();
@@ -101,9 +111,21 @@ export function DottedGlowBackground({
     const observer = new ResizeObserver(resize);
     observer.observe(canvas);
 
+    // Stop painting when scrolled out of view or the tab is hidden.
+    const io = new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting && !document.hidden;
+    });
+    io.observe(canvas);
+    const onVisibility = () => {
+      visible = !document.hidden;
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
     return () => {
       cancelAnimationFrame(raf);
       observer.disconnect();
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, [gap, dotSize, speed]);
 
