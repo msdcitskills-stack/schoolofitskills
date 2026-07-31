@@ -126,6 +126,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
+        <ScrollProgress />
         <FloatingNav />
         <main className="pt-24">
           <Outlet />
@@ -136,4 +137,5 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
 
