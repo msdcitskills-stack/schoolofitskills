@@ -15,6 +15,8 @@ import { FloatingNav } from "../components/floating-nav";
 import { FloatingDock } from "../components/floating-dock";
 import { SiteFooter } from "../components/site-footer";
 import { ThemeProvider } from "../components/theme-provider";
+import { ScrollProgress } from "../components/scroll-progress";
+
 
 function NotFoundComponent() {
   return (
