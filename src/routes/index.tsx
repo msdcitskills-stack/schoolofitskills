@@ -5,6 +5,7 @@ import msdcLogo from "@/assets/msdc-logo.png.asset.json";
 import { DotBackground } from "@/components/dot-background";
 import { MagneticButton } from "@/components/magnetic-button";
 import { EncryptedText } from "@/components/encrypted-text";
+import { Reveal, RevealGroup, Parallax } from "@/components/reveal";
 
 import { Card3D, Card3DItem } from "@/components/card-3d";
 import { TechMarquee } from "@/components/tech-marquee";
@@ -97,7 +98,7 @@ function Home() {
                 ))}
               </div>
             </div>
-            <div className="relative">
+            <Parallax className="relative" strength={54}>
               <div className="glass corner-glow relative rounded-[2rem] p-8 shadow-2xl animate-float">
                 <img
                   src={soisLogo.url}
@@ -112,13 +113,13 @@ function Home() {
                 </div>
               </div>
               <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[3rem] bg-primary/20 blur-3xl" />
-            </div>
+            </Parallax>
           </div>
-        </section>
+        </Reveal>
       </DotBackground>
 
       {/* Tech marquee */}
-      <section className="mx-auto max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto max-w-7xl px-6">
         <div className="mb-4 flex items-center justify-between">
           <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
             Tools & tech we teach
@@ -128,16 +129,16 @@ function Home() {
           </div>
         </div>
         <TechMarquee />
-      </section>
+      </Reveal>
 
       {/* Bento categories */}
-      <section className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
         <SectionHeading
           eyebrow="Catalogue"
           title="Four pathways, one campus."
           description="Pick your track — every course ships with hands-on projects, mentor support and certification."
         />
-        <div className="mt-10 grid gap-4 md:grid-cols-6 md:grid-rows-2">
+        <RevealGroup className="mt-10 grid gap-4 md:grid-cols-6 md:grid-rows-2" step={90}>
           <BentoCard
             to="/courses"
             className="md:col-span-3 md:row-span-2"
@@ -171,11 +172,11 @@ function Home() {
             desc={categoryMeta.school.tagline}
             count={coursesByCategory("school").length}
           />
-        </div>
-      </section>
+        </RevealGroup>
+      </Reveal>
 
       {/* Featured courses */}
-      <section className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
             eyebrow="Popular right now"
@@ -188,21 +189,21 @@ function Home() {
             View all {courses.length} courses →
           </Link>
         </div>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <RevealGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" step={60}>
           {featured.map((c, i) => (
             <CourseCard key={c.slug} course={c} index={i} />
           ))}
-        </div>
-      </section>
+        </RevealGroup>
+      </Reveal>
 
       {/* Why us */}
-      <section className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
         <SectionHeading
           eyebrow="Why School of IT Skills"
           title="Learning built for outcomes, not just certificates."
           align="center"
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <RevealGroup className="mt-12 grid gap-5 md:grid-cols-3" step={110}>
           {[
             {
               icon: GraduationCap,
@@ -234,25 +235,25 @@ function Home() {
               <p className="mt-2 text-sm text-muted-foreground">{f.body}</p>
             </div>
           ))}
-        </div>
-      </section>
+        </RevealGroup>
+      </Reveal>
 
       {/* All courses summary */}
-      <section className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
         <SectionHeading
           eyebrow="Everything in one place"
           title="All courses at a glance."
           description="30+ carefully-designed learning paths — click any card to view the full syllabus."
         />
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <RevealGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" step={35}>
           {courses.map((c, i) => (
             <CourseCard key={c.slug} course={c} index={i} />
           ))}
-        </div>
-      </section>
+        </RevealGroup>
+      </Reveal>
 
       {/* CTA */}
-      <section className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
         <div className="corner-glow glow-ring notch relative overflow-hidden rounded-[2rem] bg-secondary p-10 text-secondary-foreground md:p-16">
           <div
             className="absolute inset-0 opacity-30 dot-field"
@@ -284,7 +285,7 @@ function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
     </div>
   );
 }
