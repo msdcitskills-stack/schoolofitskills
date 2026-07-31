@@ -138,7 +138,7 @@ function Home() {
           title="Four pathways, one campus."
           description="Pick your track — every course ships with hands-on projects, mentor support and certification."
         />
-        <RevealGroup className="mt-10 grid gap-4 md:grid-cols-6 md:grid-rows-2" step={90}>
+        <div className="mt-10 grid gap-4 md:grid-cols-6 md:grid-rows-2">
           <BentoCard
             to="/courses"
             className="md:col-span-3 md:row-span-2"
@@ -172,7 +172,8 @@ function Home() {
             desc={categoryMeta.school.tagline}
             count={coursesByCategory("school").length}
           />
-        </RevealGroup>
+        </div>
+
       </Reveal>
 
       {/* Featured courses */}
