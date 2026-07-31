@@ -115,7 +115,7 @@ function Home() {
               <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[3rem] bg-primary/20 blur-3xl" />
             </Parallax>
           </div>
-        </Reveal>
+        </section>
       </DotBackground>
 
       {/* Tech marquee */}
