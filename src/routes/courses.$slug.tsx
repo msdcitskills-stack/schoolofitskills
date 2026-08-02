@@ -23,7 +23,14 @@ import {
 import { DotBackground } from "@/components/dot-background";
 import { MagneticButton } from "@/components/magnetic-button";
 import { CourseCard } from "@/components/course-card";
-import { getCourse, courses, categoryMeta, type Course } from "@/data/courses";
+import {
+  getCourse,
+  courses,
+  categoryMeta,
+  courseAbout,
+  tallyBenefits,
+  type Course,
+} from "@/data/courses";
 import { getCourseDetail } from "@/data/course-detail";
 
 export const Route = createFileRoute("/courses/$slug")({
