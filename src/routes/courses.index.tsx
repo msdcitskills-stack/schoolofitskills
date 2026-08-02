@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { DotBackground } from "@/components/dot-background";
 import { courses, categoryMeta, type Course } from "@/data/courses";
 
-export const Route = createFileRoute("/courses")({
+export const Route = createFileRoute("/courses/")({
   head: () => ({
     meta: [
       { title: "All Courses — School of IT Skills" },
