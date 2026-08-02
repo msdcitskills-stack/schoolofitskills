@@ -610,3 +610,42 @@ export const categoryMeta = {
 export const getCourse = (slug: string) => courses.find((c) => c.slug === slug);
 export const coursesByCategory = (cat: Course["category"]) =>
   courses.filter((c) => c.category === cat);
+
+/** Verbatim programme descriptions from the official course document. */
+export const courseAbout: Record<string, string> = {
+  "tally-level-1":
+    "Tally Essential certification helps anyone looking to enhance their accounting and business management skills. Level 1 (Recording & Reporting) is the entry point of the three-level Tally Essential path and is highly recommended for learners who aspire to build a career in Accounts, Finance, Taxation and Banking, or as an entrepreneur.",
+  "tally-level-2":
+    "Level 2 (Accounts Payable & Receivable) builds on Level 1 with inventory storage and classification, receivables and payables management, order processing, cost/profit centres, budgets and scenario reporting — the day-to-day work of a business accountant.",
+  "tally-level-3":
+    "Level 3 (Taxation & Compliance) completes the Tally Essential path with Goods and Services Tax, Tax Deducted at Source, management of business data and the year-end process of moving to the next financial year.",
+  "tally-comprehensive":
+    "This certification covers all essential topics related to Computerized Accounting on TallyPrime. It includes the modules of Tally Essential Level 1, Level 2 and Level 3. By completing this course, learners gain valuable skills in Accounts, Finance and Taxation, making it ideal for those pursuing careers in these fields or aspiring entrepreneurs.",
+  "gst-tally":
+    "This advanced-level certification is best suited for learners who want to enhance their theoretical and practical knowledge of GST. It covers GST concepts such as e-Way Bill, e-Invoice and the accounting of GST-compliant transactions. Learners understand how to introduce GST in a company, record basic and advanced compliance transactions, generate GST returns with simulation, and stay up to date with the latest GST changes. Highly recommended for learners aspiring to be a Tax Specialist or an entrepreneur.",
+  "kids-ai-creators":
+    "Goal: to equip students of Class 6–12 with real-world AI tool usage for creative, academic and personal projects — all without coding.",
+  "kids-ai-research":
+    "Goal: teach students to use AI tools for smart learning, summarization and content creation — from ChatGPT study help and Perplexity research to quizzes, flashcards and a final topic-based poster or presentation.",
+  "kids-ai-foundations":
+    "A playful first look at how AI really works — machine learning and neural networks explained simply, AI spotted in everyday life, and hands-on building with Teachable Machine, Scratch and MIT App Inventor, including awareness of data bias and safe technology use.",
+  "kids-python-basics":
+    "A first real programming course for young learners: variables and data types, input/output, conditional logic, loops and arithmetic — plus presenting, reviewing and documenting code, and the communication skills that go with it.",
+  "kids-python-intermediate":
+    "A step up in Python: computational thinking, string handling and algorithms, file handling and modularity, debugging and function design, delivered through hands-on tasks, mini projects, games and tools, with peer coding and project presentations.",
+};
+
+/** Benefits listed by Tally Company for every certified Tally programme. */
+export const tallyBenefits: string[] = [
+  "Candidate Portal access for every enrolled student",
+  "Digital content of the enrolled course/s — books and videos",
+  "Assessments: chapter-wise mock tests and final mock test preparation",
+  "Job Portal access",
+  "Final Computer Based Test (CBT)",
+  "Tally Certification — digital / verifiable certificate",
+  "Certificate directly from Tally Company, creators of Tally software",
+  "Globally recognised certificate",
+  "Highlights of the syllabus printed on the back of the certificate",
+  "Grading provided (A+, A, B, C)",
+  "Soft skills training for employability",
+];

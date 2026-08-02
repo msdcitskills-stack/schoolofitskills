@@ -23,7 +23,14 @@ import {
 import { DotBackground } from "@/components/dot-background";
 import { MagneticButton } from "@/components/magnetic-button";
 import { CourseCard } from "@/components/course-card";
-import { getCourse, courses, categoryMeta, type Course } from "@/data/courses";
+import {
+  getCourse,
+  courses,
+  categoryMeta,
+  courseAbout,
+  tallyBenefits,
+  type Course,
+} from "@/data/courses";
 import { getCourseDetail } from "@/data/course-detail";
 
 export const Route = createFileRoute("/courses/$slug")({
@@ -157,6 +164,36 @@ function CoursePage() {
       {/* Body + sticky sidebar */}
       <section className="mx-auto grid max-w-6xl gap-8 px-6 pb-16 lg:grid-cols-[1.55fr_1fr] lg:items-start">
         <div className="flex flex-col gap-8">
+          {/* About — verbatim from the official course document */}
+          {courseAbout[course.slug] && (
+            <Reveal className="corner-glow glow-ring rounded-3xl border border-border bg-card p-8">
+              <Eyebrow icon={GraduationCap}>About this program</Eyebrow>
+              <h2 className="text-2xl font-bold tracking-tight">Program overview</h2>
+              <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+                {courseAbout[course.slug]}
+              </p>
+            </Reveal>
+          )}
+
+          {/* Tally — official benefits to the candidate */}
+          {course.category === "tally" && (
+            <Reveal className="corner-glow rounded-3xl border border-border bg-card p-8">
+              <Eyebrow icon={Award}>Tally certification</Eyebrow>
+              <h2 className="text-2xl font-bold tracking-tight">Benefits to the candidate</h2>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                {tallyBenefits.map((b) => (
+                  <li
+                    key={b}
+                    className="flex items-start gap-3 rounded-2xl border border-border/60 bg-background/60 p-4 text-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40"
+                  >
+                    <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          )}
+
           {/* Outcomes */}
           <Reveal className="corner-glow glow-ring rounded-3xl border border-border bg-card p-8">
             <Eyebrow icon={Sparkles}>Learning outcomes</Eyebrow>
