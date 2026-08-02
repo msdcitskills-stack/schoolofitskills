@@ -12,10 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TallyRouteImport } from './routes/tally'
 import { Route as SchoolProgramsRouteImport } from './routes/school-programs'
 import { Route as InternshipsRouteImport } from './routes/internships'
-import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CoursesIndexRouteImport } from './routes/courses.index'
 import { Route as CoursesSlugRouteImport } from './routes/courses.$slug'
 
 const TallyRoute = TallyRouteImport.update({
@@ -33,11 +33,6 @@ const InternshipsRoute = InternshipsRouteImport.update({
   path: '/internships',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CoursesRoute = CoursesRouteImport.update({
-  id: '/courses',
-  path: '/courses',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -53,42 +48,47 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CoursesIndexRoute = CoursesIndexRouteImport.update({
+  id: '/courses/',
+  path: '/courses/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CoursesSlugRoute = CoursesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => CoursesRoute,
+  id: '/courses/$slug',
+  path: '/courses/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/courses': typeof CoursesRouteWithChildren
   '/internships': typeof InternshipsRoute
   '/school-programs': typeof SchoolProgramsRoute
   '/tally': typeof TallyRoute
   '/courses/$slug': typeof CoursesSlugRoute
+  '/courses/': typeof CoursesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/courses': typeof CoursesRouteWithChildren
   '/internships': typeof InternshipsRoute
   '/school-programs': typeof SchoolProgramsRoute
   '/tally': typeof TallyRoute
   '/courses/$slug': typeof CoursesSlugRoute
+  '/courses': typeof CoursesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/courses': typeof CoursesRouteWithChildren
   '/internships': typeof InternshipsRoute
   '/school-programs': typeof SchoolProgramsRoute
   '/tally': typeof TallyRoute
   '/courses/$slug': typeof CoursesSlugRoute
+  '/courses/': typeof CoursesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -96,41 +96,42 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
-    | '/courses'
     | '/internships'
     | '/school-programs'
     | '/tally'
     | '/courses/$slug'
+    | '/courses/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/contact'
-    | '/courses'
     | '/internships'
     | '/school-programs'
     | '/tally'
     | '/courses/$slug'
+    | '/courses'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
-    | '/courses'
     | '/internships'
     | '/school-programs'
     | '/tally'
     | '/courses/$slug'
+    | '/courses/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  CoursesRoute: typeof CoursesRouteWithChildren
   InternshipsRoute: typeof InternshipsRoute
   SchoolProgramsRoute: typeof SchoolProgramsRoute
   TallyRoute: typeof TallyRoute
+  CoursesSlugRoute: typeof CoursesSlugRoute
+  CoursesIndexRoute: typeof CoursesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -156,13 +157,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InternshipsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/courses': {
-      id: '/courses'
-      path: '/courses'
-      fullPath: '/courses'
-      preLoaderRoute: typeof CoursesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -184,35 +178,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/courses/': {
+      id: '/courses/'
+      path: '/courses'
+      fullPath: '/courses/'
+      preLoaderRoute: typeof CoursesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/courses/$slug': {
       id: '/courses/$slug'
-      path: '/$slug'
+      path: '/courses/$slug'
       fullPath: '/courses/$slug'
       preLoaderRoute: typeof CoursesSlugRouteImport
-      parentRoute: typeof CoursesRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface CoursesRouteChildren {
-  CoursesSlugRoute: typeof CoursesSlugRoute
-}
-
-const CoursesRouteChildren: CoursesRouteChildren = {
-  CoursesSlugRoute: CoursesSlugRoute,
-}
-
-const CoursesRouteWithChildren =
-  CoursesRoute._addFileChildren(CoursesRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  CoursesRoute: CoursesRouteWithChildren,
   InternshipsRoute: InternshipsRoute,
   SchoolProgramsRoute: SchoolProgramsRoute,
   TallyRoute: TallyRoute,
+  CoursesSlugRoute: CoursesSlugRoute,
+  CoursesIndexRoute: CoursesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
