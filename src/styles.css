@@ -328,11 +328,59 @@
   text-wrap: balance;
 }
 
+/* Soft grainy mesh gradients for the bento pathway cards */
+@utility grainient {
+  background:
+    radial-gradient(70% 80% at 12% 18%, var(--grainient-a), transparent 70%),
+    radial-gradient(65% 70% at 88% 12%, var(--grainient-b), transparent 72%),
+    radial-gradient(80% 80% at 55% 100%, var(--grainient-c), transparent 74%);
+  background-size: 170% 170%;
+  opacity: 0.85;
+  transition: opacity 600ms ease, transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
+  }
+}
+
+.group:hover .grainient {
+  opacity: 1;
+  transform: scale(1.1) rotate(1.5deg);
+}
+
+@utility grainient-1 {
+  --grainient-a: oklch(from var(--primary) 0.93 0.09 h / 0.9);
+  --grainient-b: oklch(from var(--primary) 0.95 0.06 calc(h + 40) / 0.8);
+  --grainient-c: oklch(from var(--primary) 0.94 0.07 calc(h - 35) / 0.8);
+}
+
+@utility grainient-2 {
+  --grainient-a: oklch(from var(--primary) 0.94 0.07 calc(h + 120) / 0.75);
+  --grainient-b: oklch(from var(--primary) 0.93 0.09 calc(h + 60) / 0.85);
+  --grainient-c: oklch(from var(--primary) 0.95 0.05 h / 0.7);
+}
+
+@utility grainient-3 {
+  --grainient-a: oklch(from var(--primary) 0.94 0.08 calc(h + 200) / 0.8);
+  --grainient-b: oklch(from var(--primary) 0.95 0.06 calc(h + 250) / 0.75);
+  --grainient-c: oklch(from var(--primary) 0.94 0.06 h / 0.7);
+}
+
+@utility grainient-4 {
+  --grainient-a: oklch(from var(--primary) 0.93 0.09 calc(h - 90) / 0.85);
+  --grainient-b: oklch(from var(--primary) 0.95 0.06 calc(h - 40) / 0.75);
+  --grainient-c: oklch(from var(--primary) 0.94 0.07 calc(h + 30) / 0.7);
+}
+
 @utility skeleton {
   background: linear-gradient(90deg,
-    color-mix(in oklab, var(--color-muted) 100%, transparent) 0%,
-    color-mix(in oklab, var(--color-muted-foreground) 20%, transparent) 50%,
-    color-mix(in oklab, var(--color-muted) 100%, transparent) 100%);
+    color-mix(in oklab, var(--color-muted) 95%, transparent) 0%,
+    color-mix(in oklab, var(--color-muted-foreground) 44%, transparent) 50%,
+    color-mix(in oklab, var(--color-muted) 95%, transparent) 100%);
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.6s ease-in-out infinite;
 }
