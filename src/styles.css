@@ -354,38 +354,38 @@
 @utility grainient-1 {
   --grainient-hue: 0deg;
   --grainient-mesh:
-    radial-gradient(60% 70% at 15% 20%, color-mix(in oklab, var(--color-primary) 42%, transparent), transparent 70%),
-    radial-gradient(55% 60% at 85% 15%, color-mix(in oklab, var(--color-glow) 38%, transparent), transparent 70%),
-    radial-gradient(70% 70% at 60% 100%, color-mix(in oklab, var(--color-accent) 34%, transparent), transparent 72%);
+    radial-gradient(60% 70% at 15% 20%, color-mix(in oklab, var(--color-primary) 92%, transparent), transparent 70%),
+    radial-gradient(55% 60% at 85% 15%, color-mix(in oklab, var(--color-glow) 83%, transparent), transparent 70%),
+    radial-gradient(70% 70% at 60% 100%, color-mix(in oklab, var(--color-accent) 74%, transparent), transparent 72%);
 }
 
 @utility grainient-2 {
   --grainient-hue: -28deg;
   --grainient-mesh:
-    radial-gradient(70% 80% at 90% 20%, color-mix(in oklab, var(--color-accent) 40%, transparent), transparent 70%),
-    radial-gradient(60% 70% at 10% 80%, color-mix(in oklab, var(--color-primary) 30%, transparent), transparent 72%);
+    radial-gradient(70% 80% at 90% 20%, color-mix(in oklab, var(--color-accent) 88%, transparent), transparent 70%),
+    radial-gradient(60% 70% at 10% 80%, color-mix(in oklab, var(--color-primary) 66%, transparent), transparent 72%);
 }
 
 @utility grainient-3 {
   --grainient-hue: 150deg;
   --grainient-mesh:
-    radial-gradient(80% 90% at 20% 90%, color-mix(in oklab, var(--color-glow) 42%, transparent), transparent 70%),
-    radial-gradient(60% 60% at 80% 10%, color-mix(in oklab, var(--color-primary) 26%, transparent), transparent 72%);
+    radial-gradient(80% 90% at 20% 90%, color-mix(in oklab, var(--color-glow) 92%, transparent), transparent 70%),
+    radial-gradient(60% 60% at 80% 10%, color-mix(in oklab, var(--color-primary) 57%, transparent), transparent 72%);
 }
 
 @utility grainient-4 {
   --grainient-hue: 80deg;
   --grainient-mesh:
-    radial-gradient(90% 90% at 50% 0%, color-mix(in oklab, var(--color-accent) 36%, transparent), transparent 72%),
-    radial-gradient(70% 70% at 20% 100%, color-mix(in oklab, var(--color-primary) 28%, transparent), transparent 72%);
+    radial-gradient(90% 90% at 50% 0%, color-mix(in oklab, var(--color-accent) 79%, transparent), transparent 72%),
+    radial-gradient(70% 70% at 20% 100%, color-mix(in oklab, var(--color-primary) 61%, transparent), transparent 72%);
 }
 
 
 @utility skeleton {
   background: linear-gradient(90deg,
-    color-mix(in oklab, var(--color-muted) 100%, transparent) 0%,
-    color-mix(in oklab, var(--color-muted-foreground) 20%, transparent) 50%,
-    color-mix(in oklab, var(--color-muted) 100%, transparent) 100%);
+    color-mix(in oklab, var(--color-muted) 95%, transparent) 0%,
+    color-mix(in oklab, var(--color-muted-foreground) 44%, transparent) 50%,
+    color-mix(in oklab, var(--color-muted) 95%, transparent) 100%);
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.6s ease-in-out infinite;
 }
