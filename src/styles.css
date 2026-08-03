@@ -186,16 +186,23 @@
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
     -webkit-text-size-adjust: 100%;
+    /* Slightly zoomed-out layout: everything scales down from the root em */
+    font-size: 15px;
+  }
+  @media (min-width: 1280px) {
+    html { font-size: 14.5px; }
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
     overscroll-behavior-y: none;
   }
+
   h1, h2, h3, h4, h5 { font-family: var(--font-display); letter-spacing: -0.02em; }
   ::selection { background: var(--color-primary); color: var(--color-primary-foreground); }
 
