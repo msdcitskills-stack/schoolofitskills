@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Clock, IndianRupee, Users } from "lucide-react";
+import { ArrowUpRight, Clock, Users } from "lucide-react";
 import type { Course } from "@/data/courses";
 
 export function CourseCard({ course, index = 0 }: { course: Course; index?: number }) {
