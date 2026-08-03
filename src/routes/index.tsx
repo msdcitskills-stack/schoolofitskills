@@ -142,6 +142,7 @@ function Home() {
           <BentoCard
             to="/courses"
             className="md:col-span-3 md:row-span-2"
+            gradient="grainient-1"
             icon={<Rocket className="h-5 w-5" />}
             title={categoryMeta.professional.label}
             desc={categoryMeta.professional.tagline}
@@ -151,6 +152,7 @@ function Home() {
           <BentoCard
             to="/tally"
             className="md:col-span-3"
+            gradient="grainient-2"
             icon={<Award className="h-5 w-5" />}
             title={categoryMeta.tally.label}
             desc={categoryMeta.tally.tagline}
@@ -159,6 +161,7 @@ function Home() {
           <BentoCard
             to="/internships"
             className="md:col-span-2"
+            gradient="grainient-3"
             icon={<ShieldCheck className="h-5 w-5" />}
             title={categoryMeta.internship.label}
             desc={categoryMeta.internship.tagline}
@@ -167,6 +170,7 @@ function Home() {
           <BentoCard
             to="/school-programs"
             className="md:col-span-1"
+            gradient="grainient-4"
             icon={<Sparkles className="h-5 w-5" />}
             title="Kids"
             desc={categoryMeta.school.tagline}
@@ -299,6 +303,7 @@ function BentoCard({
   count,
   className = "",
   large = false,
+  gradient = "grainient-1",
 }: {
   to: string;
   title: string;
@@ -307,12 +312,13 @@ function BentoCard({
   count: number;
   className?: string;
   large?: boolean;
+  gradient?: string;
 }) {
   return (
     <Card3D className={className} intensity={large ? 8 : 12}>
       <Link
         to={to}
-        className="group corner-glow glare-card glow-ring relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-shadow duration-300 hover:shadow-2xl"
+        className={`group corner-glow glare-card glow-ring grainient ${gradient} relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-shadow duration-300 hover:shadow-2xl`}
       >
         <div
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
