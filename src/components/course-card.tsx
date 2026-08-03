@@ -35,14 +35,10 @@ export function CourseCard({ course, index = 0 }: { course: Course; index?: numb
         {course.summary}
       </p>
 
-      <div className="relative z-10 mt-auto grid grid-cols-3 gap-2 border-t border-border/60 pt-4 text-[11px] text-muted-foreground">
+      <div className="relative z-10 mt-auto grid grid-cols-2 gap-2 border-t border-border/60 pt-4 text-[11px] text-muted-foreground">
         <div className="flex flex-col">
           <Clock className="mb-1 h-3.5 w-3.5" />
           <span className="font-medium text-foreground">{course.duration}</span>
-        </div>
-        <div className="flex flex-col">
-          <IndianRupee className="mb-1 h-3.5 w-3.5" />
-          <span className="font-medium text-foreground">{course.fee}</span>
         </div>
         <div className="flex flex-col">
           <Users className="mb-1 h-3.5 w-3.5" />
