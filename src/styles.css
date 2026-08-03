@@ -328,6 +328,64 @@
   text-wrap: balance;
 }
 
+/* Soft grainy mesh gradients for the bento pathway cards */
+@utility grainient {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    opacity: 0.55;
+    transition: opacity 600ms ease, transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    background: var(--grainient-mesh);
+    background-size: 180% 180%;
+    background-position: 0% 0%;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.16;
+    mix-blend-mode: soft-light;
+    transition: opacity 600ms ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
+  }
+  &:hover::before {
+    opacity: 0.9;
+    transform: scale(1.08) rotate(1.5deg);
+  }
+  &:hover::after { opacity: 0.24; }
+}
+
+@utility grainient-1 {
+  --grainient-mesh:
+    radial-gradient(60% 70% at 15% 20%, color-mix(in oklab, var(--color-primary) 42%, transparent), transparent 70%),
+    radial-gradient(55% 60% at 85% 15%, color-mix(in oklab, var(--color-glow) 38%, transparent), transparent 70%),
+    radial-gradient(70% 70% at 60% 100%, color-mix(in oklab, var(--color-accent) 34%, transparent), transparent 72%);
+}
+
+@utility grainient-2 {
+  --grainient-mesh:
+    radial-gradient(70% 80% at 90% 20%, color-mix(in oklab, var(--color-accent) 40%, transparent), transparent 70%),
+    radial-gradient(60% 70% at 10% 80%, color-mix(in oklab, var(--color-primary) 30%, transparent), transparent 72%);
+}
+
+@utility grainient-3 {
+  --grainient-mesh:
+    radial-gradient(80% 90% at 20% 90%, color-mix(in oklab, var(--color-glow) 42%, transparent), transparent 70%),
+    radial-gradient(60% 60% at 80% 10%, color-mix(in oklab, var(--color-primary) 26%, transparent), transparent 72%);
+}
+
+@utility grainient-4 {
+  --grainient-mesh:
+    radial-gradient(90% 90% at 50% 0%, color-mix(in oklab, var(--color-accent) 36%, transparent), transparent 72%),
+    radial-gradient(70% 70% at 20% 100%, color-mix(in oklab, var(--color-primary) 28%, transparent), transparent 72%);
+}
+
+
 @utility skeleton {
   background: linear-gradient(90deg,
     color-mix(in oklab, var(--color-muted) 100%, transparent) 0%,
