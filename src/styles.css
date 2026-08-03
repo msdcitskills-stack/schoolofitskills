@@ -330,34 +330,24 @@
 
 /* Soft grainy mesh gradients for the bento pathway cards */
 @utility grainient {
-  position: relative;
-  isolation: isolate;
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    opacity: 0.55;
-    transition: opacity 600ms ease, transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
-    background: var(--grainient-mesh);
-    background-size: 180% 180%;
-    background-position: 0% 0%;
-  }
+  background: var(--grainient-mesh);
+  background-size: 180% 180%;
+  background-position: 0% 0%;
+  opacity: 0.5;
+  transition: opacity 600ms ease, transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
   &::after {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: -1;
-    opacity: 0.16;
+    opacity: 0.18;
     mix-blend-mode: soft-light;
-    transition: opacity 600ms ease;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
   }
-  &:hover::before {
-    opacity: 0.9;
-    transform: scale(1.08) rotate(1.5deg);
-  }
-  &:hover::after { opacity: 0.24; }
+}
+
+.group:hover .grainient {
+  opacity: 0.85;
+  transform: scale(1.08) rotate(1.5deg);
 }
 
 @utility grainient-1 {

@@ -318,7 +318,7 @@ function BentoCard({
     <Card3D className={className} intensity={large ? 8 : 12}>
       <Link
         to={to}
-        className={`group corner-glow glare-card glow-ring grainient ${gradient} relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-shadow duration-300 hover:shadow-2xl`}
+        className={`group corner-glow glare-card glow-ring relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-shadow duration-300 hover:shadow-2xl`}
       >
         <div
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -326,6 +326,10 @@ function BentoCard({
             background:
               "radial-gradient(360px circle at var(--mx,50%) var(--my,50%), color-mix(in oklab, var(--primary) 18%, transparent), transparent 70%)",
           }}
+          aria-hidden
+        />
+        <div
+          className={`grainient ${gradient} pointer-events-none absolute inset-0`}
           aria-hidden
         />
         <Card3DItem z={50} className="relative z-10 flex items-center justify-between">
