@@ -107,7 +107,7 @@ function Home() {
                 />
                 <div className="mt-6 flex items-center justify-center gap-3 border-t border-border/60 pt-6">
                   <span className="text-xs uppercase tracking-widest text-muted-foreground">
-                    A unit of
+                    A School of
                   </span>
                   <img src={msdcLogo.url} alt="MSDC" className="h-8 w-auto" />
                 </div>
