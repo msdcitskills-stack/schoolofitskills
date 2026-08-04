@@ -1,4 +1,4 @@
-import { useRef, useState, createContext, useContext } from "react";
+import { useRef, useState, createContext, useContext, useEffect } from "react";
 
 const Card3DContext = createContext(false);
 
@@ -14,24 +14,46 @@ export function Card3D({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
+  // Tilt is pointer-only: on touch it fights with scrolling and costs frames.
+  const enabled = useRef(false);
+  const frame = useRef(0);
+  const next = useRef({ x: 0, y: 0 });
 
-  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  useEffect(() => {
+    enabled.current =
+      window.matchMedia("(pointer: fine)").matches &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return () => cancelAnimationFrame(frame.current);
+  }, []);
+
+  const apply = () => {
+    frame.current = 0;
     const el = ref.current;
     if (!el) return;
-    // Skip tilt on touch devices — it fights with scrolling and costs frames.
-    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches)
-      return;
-    const rect = el.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    const { x, y } = next.current;
     el.style.transform = `rotateY(${x * intensity}deg) rotateX(${-y * intensity}deg) scale(1.02)`;
     el.style.setProperty("--mx", `${(x + 0.5) * 100}%`);
     el.style.setProperty("--my", `${(y + 0.5) * 100}%`);
   };
 
+  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!enabled.current) return;
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    next.current = {
+      x: (e.clientX - rect.left) / rect.width - 0.5,
+      y: (e.clientY - rect.top) / rect.height - 0.5,
+    };
+    if (!frame.current) frame.current = requestAnimationFrame(apply);
+  };
 
   const reset = () => {
     setHovered(false);
+    if (frame.current) {
+      cancelAnimationFrame(frame.current);
+      frame.current = 0;
+    }
     if (ref.current) ref.current.style.transform = "rotateY(0deg) rotateX(0deg) scale(1)";
   };
 
@@ -43,7 +65,7 @@ export function Card3D({
           onMouseEnter={() => setHovered(true)}
           onMouseMove={handleMove}
           onMouseLeave={reset}
-          className="relative h-full w-full transition-transform duration-200 ease-out [transform-style:preserve-3d] will-change-transform"
+          className="relative h-full w-full transition-transform duration-200 ease-out [transform-style:preserve-3d]"
         >
           {children}
         </div>
