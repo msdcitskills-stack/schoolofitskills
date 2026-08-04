@@ -35,8 +35,23 @@
   --color-ring: var(--ring);
   --color-glow: var(--glow);
 
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Fluid type scale — one continuous ramp, so nothing jumps or misaligns
+     between breakpoints or when the page is zoomed out. */
+  --text-xs: clamp(0.72rem, 0.70rem + 0.10vw, 0.78rem);
+  --text-sm: clamp(0.82rem, 0.79rem + 0.14vw, 0.90rem);
+  --text-base: clamp(0.94rem, 0.90rem + 0.18vw, 1.02rem);
+  --text-lg: clamp(1.05rem, 1.00rem + 0.24vw, 1.16rem);
+  --text-xl: clamp(1.18rem, 1.10rem + 0.34vw, 1.34rem);
+  --text-2xl: clamp(1.38rem, 1.24rem + 0.62vw, 1.66rem);
+  --text-3xl: clamp(1.62rem, 1.40rem + 0.95vw, 2.05rem);
+  --text-4xl: clamp(1.90rem, 1.56rem + 1.45vw, 2.55rem);
+  --text-5xl: clamp(2.25rem, 1.72rem + 2.20vw, 3.25rem);
+  --text-6xl: clamp(2.60rem, 1.82rem + 3.20vw, 4.05rem);
+  --text-7xl: clamp(3.00rem, 1.90rem + 4.40vw, 5.00rem);
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
