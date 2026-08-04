@@ -28,7 +28,7 @@ function Contact() {
   return (
     <div>
       <DotBackground>
-        <Reveal as="section" className="mx-auto max-w-5xl px-6 pb-16 pt-6">
+        <Reveal as="section" className="mx-auto max-w-5xl page-x pb-16 pt-6">
           <SectionHeading
             eyebrow="Contact"
             title="Let's find the right course for you."
@@ -37,7 +37,7 @@ function Contact() {
         </Reveal>
       </DotBackground>
 
-      <Reveal as="section" className="mx-auto max-w-5xl px-6 pb-20">
+      <Reveal as="section" className="mx-auto max-w-5xl page-x pb-20">
         <div className="grid gap-5 md:grid-cols-3">
           <ContactCard
             icon={Mail}

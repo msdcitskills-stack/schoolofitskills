@@ -39,7 +39,7 @@ function Home() {
     <div className="min-h-screen">
       {/* Hero */}
       <DotBackground className="relative overflow-hidden">
-        <section className="mx-auto max-w-7xl px-6 pb-20 pt-10 md:pt-16">
+        <section className="mx-auto max-w-7xl page-x pb-20 pt-10 md:pt-16">
           <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_1fr]">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1.5 text-xs font-semibold tracking-widest text-muted-foreground shadow-sm backdrop-blur">
@@ -119,7 +119,7 @@ function Home() {
       </DotBackground>
 
       {/* Tech marquee */}
-      <Reveal as="section" className="mx-auto max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto max-w-7xl page-x">
         <div className="mb-4 flex items-center justify-between">
           <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
             Tools & tech we teach
@@ -132,7 +132,7 @@ function Home() {
       </Reveal>
 
       {/* Bento categories */}
-      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto section-gap max-w-7xl page-x">
         <SectionHeading
           eyebrow="Catalogue"
           title="Four pathways, one campus."
@@ -181,7 +181,7 @@ function Home() {
       </Reveal>
 
       {/* Featured courses */}
-      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto section-gap max-w-7xl page-x">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
             eyebrow="Popular right now"
@@ -202,7 +202,7 @@ function Home() {
       </Reveal>
 
       {/* Why us */}
-      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto section-gap max-w-7xl page-x">
         <SectionHeading
           eyebrow="Why School of IT Skills"
           title="Learning built for outcomes, not just certificates."
@@ -244,7 +244,7 @@ function Home() {
       </Reveal>
 
       {/* All courses summary */}
-      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto section-gap max-w-7xl page-x">
         <SectionHeading
           eyebrow="Everything in one place"
           title="All courses at a glance."
@@ -258,7 +258,7 @@ function Home() {
       </Reveal>
 
       {/* CTA */}
-      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto section-gap max-w-7xl page-x">
         <div className="corner-glow glow-ring notch relative overflow-hidden rounded-[2rem] bg-secondary p-10 text-secondary-foreground md:p-16">
           <div
             className="absolute inset-0 opacity-30 dot-field"

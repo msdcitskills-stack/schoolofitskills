@@ -106,7 +106,7 @@ function CoursePage() {
     <div>
       {/* Hero */}
       <DotBackground>
-        <Reveal as="section" className="mx-auto max-w-6xl px-6 pb-14 pt-6">
+        <Reveal as="section" className="mx-auto max-w-6xl page-x pb-14 pt-6">
           <nav className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
             <Link to="/courses" className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground">
               <ArrowLeft className="h-3.5 w-3.5" /> All courses
@@ -411,7 +411,7 @@ function CoursePage() {
 
       {/* Prev / next */}
       {(prev || next) && (
-        <Reveal as="section" className="mx-auto max-w-6xl px-6 pb-8">
+        <Reveal as="section" className="mx-auto max-w-6xl page-x pb-8">
           <div className="grid gap-4 sm:grid-cols-2">
             {prev ? (
               <Link
@@ -440,7 +440,7 @@ function CoursePage() {
       )}
 
       {related.length > 0 && (
-        <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-16">
+        <Reveal as="section" className="mx-auto max-w-7xl page-x pb-16">
           <div className="mb-6 flex items-baseline justify-between">
             <h3 className="text-xl font-bold tracking-tight">Related courses</h3>
             <Link to="/courses" className="story-link text-sm font-semibold">

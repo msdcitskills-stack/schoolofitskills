@@ -55,7 +55,7 @@ function CoursesPage() {
   return (
     <div>
       <DotBackground>
-        <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-14 pt-6">
+        <Reveal as="section" className="mx-auto max-w-7xl page-x pb-14 pt-6">
           <SectionHeading
             eyebrow="Course catalogue"
             title="Every course, one place."
@@ -90,7 +90,7 @@ function CoursesPage() {
         </Reveal>
       </DotBackground>
 
-      <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-16">
+      <Reveal as="section" className="mx-auto max-w-7xl page-x pb-16">
         {cat === "all"
           ? filters
               .filter((f) => f.key !== "all")
