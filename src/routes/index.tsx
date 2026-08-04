@@ -80,17 +80,17 @@ function Home() {
                 </Link>
               </div>
 
-              <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
+              <div className="mt-10 grid max-w-md grid-cols-3 gap-3 sm:gap-4">
                 {[
                   { n: "30+", l: "Programs" },
-                  { n: "10th → Pro", l: "Learners" },
+                  { n: "10th+", l: "Learners" },
                   { n: "Manipal", l: "Campus" },
                 ].map((s) => (
                   <div
                     key={s.l}
                     className="glass rounded-2xl px-3 py-4 text-center transition-transform hover:-translate-y-1"
                   >
-                    <div className="text-2xl font-bold tracking-tight">{s.n}</div>
+                    <div className="whitespace-nowrap text-2xl font-semibold tracking-tight">{s.n}</div>
                     <div className="eyebrow text-muted-foreground">
                       {s.l}
                     </div>
