@@ -10,33 +10,61 @@ const offsets: Record<Direction, string> = {
   none: "translate3d(0,0,0)",
 };
 
-function useInView<T extends HTMLElement>(once = true, rootMargin = "0px 0px -12% 0px") {
+/** One shared observer for every reveal on the page — far cheaper than one each. */
+type Cb = (inView: boolean) => void;
+let sharedIO: IntersectionObserver | null = null;
+const callbacks = new WeakMap<Element, Cb>();
+
+function observe(el: Element, cb: Cb) {
+  if (typeof IntersectionObserver === "undefined") {
+    cb(true);
+    return () => {};
+  }
+  if (!sharedIO) {
+    sharedIO = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            callbacks.get(entry.target)?.(true);
+            sharedIO?.unobserve(entry.target);
+            callbacks.delete(entry.target);
+          }
+        }
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
+    );
+  }
+  callbacks.set(el, cb);
+  sharedIO.observe(el);
+  return () => {
+    sharedIO?.unobserve(el);
+    callbacks.delete(el);
+  };
+}
+
+function useInView<T extends HTMLElement>() {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setInView(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          if (once) io.disconnect();
-        } else if (!once) {
-          setInView(false);
-        }
-      },
-      { rootMargin, threshold: 0.08 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [once, rootMargin]);
+    return observe(el, () => setInView(true));
+  }, []);
 
   return { ref, inView };
+}
+
+/** True on phones/tablets, where blur filters and long transitions get expensive. */
+function useLite() {
+  const [lite, setLite] = useState(false);
+  useEffect(() => {
+    setLite(
+      window.matchMedia("(pointer: coarse)").matches ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    );
+  }, []);
+  return lite;
 }
 
 /** Fades + slides its children into place the first time they scroll into view. */
@@ -58,6 +86,9 @@ export function Reveal({
   blur?: boolean;
 }) {
   const { ref, inView } = useInView<HTMLDivElement>();
+  const lite = useLite();
+  const useBlur = blur && !lite;
+  const d = lite ? Math.min(duration, 450) : duration;
 
   return (
     <Tag
@@ -66,9 +97,9 @@ export function Reveal({
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "translate3d(0,0,0)" : offsets[direction],
-        filter: blur ? (inView ? "blur(0px)" : "blur(6px)") : undefined,
-        transition: `opacity ${duration}ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform ${duration}ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, filter ${duration}ms ease ${delay}ms`,
-        willChange: inView ? "auto" : "transform, opacity",
+        filter: useBlur ? (inView ? "blur(0px)" : "blur(6px)") : undefined,
+        transition: `opacity ${d}ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform ${d}ms cubic-bezier(0.22,1,0.36,1) ${delay}ms${useBlur ? `, filter ${d}ms ease ${delay}ms` : ""}`,
+        willChange: inView ? undefined : "transform, opacity",
       }}
     >
       {children}
@@ -91,7 +122,10 @@ export function RevealGroup({
   duration?: number;
 }) {
   const { ref, inView } = useInView<HTMLDivElement>();
+  const lite = useLite();
   const items = Array.isArray(children) ? children : [children];
+  const d = lite ? Math.min(duration, 430) : duration;
+  const s = lite ? Math.min(step, 45) : step;
 
   return (
     <div ref={ref} className={className}>
@@ -102,8 +136,9 @@ export function RevealGroup({
           style={{
             opacity: inView ? 1 : 0,
             transform: inView ? "translate3d(0,0,0)" : offsets[direction],
-            transition: `opacity ${duration}ms cubic-bezier(0.22,1,0.36,1) ${Math.min(i, 12) * step}ms, transform ${duration}ms cubic-bezier(0.22,1,0.36,1) ${Math.min(i, 12) * step}ms`,
+            transition: `opacity ${d}ms cubic-bezier(0.22,1,0.36,1) ${Math.min(i, 10) * s}ms, transform ${d}ms cubic-bezier(0.22,1,0.36,1) ${Math.min(i, 10) * s}ms`,
             height: "100%",
+            willChange: inView ? undefined : "transform, opacity",
           }}
         >
           {child}
@@ -133,17 +168,24 @@ export function Parallax({
 
     let raf = 0;
     let visible = true;
+    let lastY = Number.NaN;
 
-    const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting));
+    const io = new IntersectionObserver(([e]) => {
+      visible = !!e?.isIntersecting;
+      if (visible && !raf) raf = requestAnimationFrame(update);
+    });
     io.observe(el);
 
-    const update = () => {
+    function update() {
       raf = 0;
       if (!visible) return;
-      const rect = el.getBoundingClientRect();
+      const rect = el!.getBoundingClientRect();
       const progress = (rect.top + rect.height / 2) / window.innerHeight - 0.5;
-      el.style.transform = `translate3d(0, ${(-progress * strength).toFixed(2)}px, 0)`;
-    };
+      const y = Math.round(-progress * strength * 100) / 100;
+      if (y === lastY) return;
+      lastY = y;
+      el!.style.transform = `translate3d(0, ${y}px, 0)`;
+    }
 
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);

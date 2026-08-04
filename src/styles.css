@@ -208,9 +208,25 @@
 
   img, svg, video, canvas { max-width: 100%; }
 
-  /* Smoother touch scrolling + no accidental horizontal drift on phones */
+  /* Long pages: let the browser skip layout/paint for offscreen sections */
+  main > section, main > div > section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+  }
+
+  /* Smoother touch scrolling + cheaper compositing on phones */
   @media (max-width: 768px) {
-    .glass { backdrop-filter: blur(10px) saturate(130%); }
+    .glass { backdrop-filter: blur(8px) saturate(125%); }
+    /* Heavy blurs are the main scroll-jank source on mobile GPUs */
+    .blur-3xl { filter: blur(28px); }
+    .blur-2xl { filter: blur(20px); }
+  }
+
+  /* Pointer-only flourishes: skip tilt/glare work on touch devices */
+  @media (pointer: coarse) {
+    .glare-card::after,
+    .glow-ring::before { display: none; }
+    .bulge:hover { transform: none; box-shadow: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {
