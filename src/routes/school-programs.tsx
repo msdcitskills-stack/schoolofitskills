@@ -26,7 +26,7 @@ export const Route = createFileRoute("/school-programs")({
     return (
       <div>
         <DotBackground>
-          <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-14 pt-6">
+          <Reveal as="section" className="mx-auto max-w-7xl page-x pb-14 pt-6">
             <SectionHeading
               eyebrow="Summer & Winter sessions"
               title={categoryMeta.school.label}
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/school-programs")({
             />
           </Reveal>
         </DotBackground>
-        <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-16">
+        <Reveal as="section" className="mx-auto max-w-7xl page-x pb-16">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((c, i) => (
               <CourseCard key={c.slug} course={c} index={i} />

@@ -28,7 +28,7 @@ export function SiteFooter() {
           />
         </div>
         <div>
-          <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <div className="mb-3 eyebrow text-muted-foreground">
             Explore
           </div>
           <ul className="space-y-2 text-sm">
@@ -40,7 +40,7 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <div className="mb-3 eyebrow text-muted-foreground">
             Contact
           </div>
           <ul className="space-y-2 text-sm">

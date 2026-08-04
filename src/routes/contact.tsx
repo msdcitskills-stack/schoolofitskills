@@ -28,7 +28,7 @@ function Contact() {
   return (
     <div>
       <DotBackground>
-        <Reveal as="section" className="mx-auto max-w-5xl px-6 pb-16 pt-6">
+        <Reveal as="section" className="mx-auto max-w-5xl page-x pb-16 pt-6">
           <SectionHeading
             eyebrow="Contact"
             title="Let's find the right course for you."
@@ -37,7 +37,7 @@ function Contact() {
         </Reveal>
       </DotBackground>
 
-      <Reveal as="section" className="mx-auto max-w-5xl px-6 pb-20">
+      <Reveal as="section" className="mx-auto max-w-5xl page-x pb-20">
         <div className="grid gap-5 md:grid-cols-3">
           <ContactCard
             icon={Mail}
@@ -72,7 +72,7 @@ function Contact() {
             <Field label="Phone" name="phone" type="tel" />
           </div>
           <div className="mt-5">
-            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            <label className="mb-1.5 block eyebrow text-muted-foreground">
               Message
             </label>
             <textarea
@@ -111,7 +111,7 @@ function ContactCard({
         <Icon className="h-5 w-5" />
       </span>
       <div className="min-w-0">
-        <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+        <div className="eyebrow text-muted-foreground">
           {label}
         </div>
         <div className="mt-1 truncate text-base font-semibold">{value}</div>
@@ -127,7 +127,7 @@ function Field({
 }: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+      <span className="mb-1.5 block eyebrow text-muted-foreground">
         {label}
       </span>
       <input

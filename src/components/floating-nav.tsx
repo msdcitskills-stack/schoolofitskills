@@ -35,16 +35,16 @@ export function FloatingNav() {
       }`}
     >
       <nav
-        className="glass flex items-center gap-1 rounded-full px-2 py-2 shadow-[0_10px_40px_-20px_color-mix(in_oklab,var(--color-foreground)_50%,transparent)]"
+        className="glass flex max-w-[min(96vw,72rem)] items-center gap-1 rounded-full px-2 py-2 shadow-[0_10px_40px_-20px_color-mix(in_oklab,var(--color-foreground)_50%,transparent)]"
         onMouseLeave={() => setHovered(null)}
       >
         <Link
           to="/"
-          className="flex items-center gap-2 pl-2 pr-3"
+          className="flex shrink-0 items-center gap-2 pl-1.5 pr-2 lg:pr-3"
           aria-label="School of IT Skills"
         >
           <img src={soisLogo.url} alt="" className="h-8 w-8 rounded-full" />
-          <span className="hidden text-sm font-bold tracking-tight sm:inline">
+          <span className="hidden whitespace-nowrap text-sm font-semibold tracking-tight max-md:inline lg:inline">
             School of IT Skills
           </span>
         </Link>
@@ -58,7 +58,7 @@ export function FloatingNav() {
                 <Link
                   to={l.to}
                   onMouseEnter={() => setHovered(l.to)}
-                  className={`relative z-10 block rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`relative z-10 block whitespace-nowrap rounded-full px-3 py-2 text-[0.82rem] font-medium transition-colors lg:px-4 lg:text-sm ${
                     active || hovered === l.to
                       ? "text-secondary-foreground"
                       : "text-foreground/80 hover:text-foreground"

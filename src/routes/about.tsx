@@ -30,7 +30,7 @@ function About() {
   return (
     <div>
       <DotBackground>
-        <Reveal as="section" className="mx-auto max-w-6xl px-6 pb-16 pt-6">
+        <Reveal as="section" className="mx-auto max-w-6xl page-x pb-16 pt-6">
           <SectionHeading
             eyebrow="About us"
             title="Empowering future generations with cutting-edge IT education."
@@ -65,7 +65,7 @@ function About() {
         </Reveal>
       </DotBackground>
 
-      <Reveal as="section" className="mx-auto max-w-6xl px-6 pb-20">
+      <Reveal as="section" className="mx-auto max-w-6xl page-x pb-20">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {[
             {

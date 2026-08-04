@@ -106,7 +106,7 @@ function CoursePage() {
     <div>
       {/* Hero */}
       <DotBackground>
-        <Reveal as="section" className="mx-auto max-w-6xl px-6 pb-14 pt-6">
+        <Reveal as="section" className="mx-auto max-w-6xl page-x pb-14 pt-6">
           <nav className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
             <Link to="/courses" className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground">
               <ArrowLeft className="h-3.5 w-3.5" /> All courses
@@ -136,7 +136,7 @@ function CoursePage() {
             ))}
           </div>
 
-          <h1 className="mt-4 max-w-4xl text-balance text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="mt-4 max-w-4xl text-balance text-6xl">
             {course.title}
           </h1>
           <p className="mt-5 max-w-3xl text-lg text-muted-foreground">{course.summary}</p>
@@ -350,7 +350,7 @@ function CoursePage() {
         {/* Sidebar */}
         <aside className="flex flex-col gap-6 lg:sticky lg:top-24">
           <div className="glass corner-glow glow-ring rounded-3xl border border-border p-6">
-            <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            <div className="eyebrow text-muted-foreground">
               Program fee
             </div>
             <div className="mt-1 text-3xl font-bold tracking-tight">{course.fee}</div>
@@ -411,7 +411,7 @@ function CoursePage() {
 
       {/* Prev / next */}
       {(prev || next) && (
-        <Reveal as="section" className="mx-auto max-w-6xl px-6 pb-8">
+        <Reveal as="section" className="mx-auto max-w-6xl page-x pb-8">
           <div className="grid gap-4 sm:grid-cols-2">
             {prev ? (
               <Link
@@ -440,7 +440,7 @@ function CoursePage() {
       )}
 
       {related.length > 0 && (
-        <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-16">
+        <Reveal as="section" className="mx-auto max-w-7xl page-x pb-16">
           <div className="mb-6 flex items-baseline justify-between">
             <h3 className="text-xl font-bold tracking-tight">Related courses</h3>
             <Link to="/courses" className="story-link text-sm font-semibold">
@@ -466,7 +466,7 @@ function Eyebrow({
   children: React.ReactNode;
 }) {
   return (
-    <div className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+    <div className="mb-4 flex items-center gap-2 eyebrow text-muted-foreground">
       <Icon className="h-4 w-4 text-primary" />
       {children}
     </div>
@@ -484,7 +484,7 @@ function Stat({
 }) {
   return (
     <div className="glass rounded-2xl px-4 py-4 transition-transform hover:-translate-y-1">
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+      <div className="flex items-center gap-2 eyebrow text-muted-foreground">
         <Icon className="h-3.5 w-3.5" />
         {label}
       </div>

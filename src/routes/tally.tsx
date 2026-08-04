@@ -44,7 +44,7 @@ function TallyPage() {
   return (
     <div>
       <DotBackground>
-        <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-14 pt-6">
+        <Reveal as="section" className="mx-auto max-w-7xl page-x pb-14 pt-6">
           <SectionHeading
             eyebrow="Tally certifications"
             title={categoryMeta.tally.label}
@@ -53,7 +53,7 @@ function TallyPage() {
         </Reveal>
       </DotBackground>
 
-      <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-8">
+      <Reveal as="section" className="mx-auto max-w-7xl page-x pb-8">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((c, i) => (
             <CourseCard key={c.slug} course={c} index={i} />
@@ -61,9 +61,9 @@ function TallyPage() {
         </div>
       </Reveal>
 
-      <Reveal as="section" className="mx-auto max-w-7xl px-6 pb-16">
+      <Reveal as="section" className="mx-auto max-w-7xl page-x pb-16">
         <div className="corner-glow glow-ring notch relative overflow-hidden rounded-[2rem] bg-secondary p-10 text-secondary-foreground md:p-14">
-          <h3 className="max-w-2xl text-balance text-3xl font-bold tracking-tight md:text-4xl">
+          <h3 className="max-w-2xl text-balance text-4xl">
             Everything you get, from your first class to your certificate.
           </h3>
           <ul className="mt-8 grid gap-2 sm:grid-cols-2 md:grid-cols-3">

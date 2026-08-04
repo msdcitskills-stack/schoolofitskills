@@ -39,14 +39,14 @@ function Home() {
     <div className="min-h-screen">
       {/* Hero */}
       <DotBackground className="relative overflow-hidden">
-        <section className="mx-auto max-w-7xl px-6 pb-20 pt-10 md:pt-16">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_1fr]">
+        <section className="mx-auto max-w-7xl page-x pb-[clamp(3rem,1.5rem+6vw,6rem)] pt-[clamp(1.5rem,0.5rem+3vw,4rem)]">
+          <div className="grid items-center gap-[clamp(2rem,1rem+4vw,3.5rem)] lg:grid-cols-[1.15fr_1fr]">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1.5 text-xs font-semibold tracking-widest text-muted-foreground shadow-sm backdrop-blur">
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 eyebrow px-3 py-2 text-muted-foreground shadow-sm backdrop-blur">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary animate-glow-pulse" />
                 MANIPAL SKILL DEVELOPMENT CENTRE
               </div>
-              <h1 className="mt-5 text-balance text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl md:text-7xl">
+              <h1 className="mt-5 text-balance text-7xl">
                 Empowering future generations with{" "}
                 <span className="relative inline-block">
                   <span className="relative z-10">cutting-edge</span>
@@ -80,18 +80,18 @@ function Home() {
                 </Link>
               </div>
 
-              <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
+              <div className="mt-10 grid max-w-md grid-cols-3 gap-3 sm:gap-4">
                 {[
                   { n: "30+", l: "Programs" },
-                  { n: "10th → Pro", l: "Learners" },
+                  { n: "10th+", l: "Learners" },
                   { n: "Manipal", l: "Campus" },
                 ].map((s) => (
                   <div
                     key={s.l}
                     className="glass rounded-2xl px-3 py-4 text-center transition-transform hover:-translate-y-1"
                   >
-                    <div className="text-2xl font-bold tracking-tight">{s.n}</div>
-                    <div className="text-[11px] uppercase tracking-widest text-muted-foreground">
+                    <div className="whitespace-nowrap text-2xl font-semibold tracking-tight">{s.n}</div>
+                    <div className="eyebrow text-muted-foreground">
                       {s.l}
                     </div>
                   </div>
@@ -106,7 +106,7 @@ function Home() {
                   className="mx-auto h-64 w-64 rounded-full object-contain drop-shadow-2xl"
                 />
                 <div className="mt-6 flex items-center justify-center gap-3 border-t border-border/60 pt-6">
-                  <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                  <span className="eyebrow text-muted-foreground">
                     A School of
                   </span>
                   <img src={msdcLogo.url} alt="MSDC" className="h-8 w-auto" />
@@ -119,9 +119,9 @@ function Home() {
       </DotBackground>
 
       {/* Tech marquee */}
-      <Reveal as="section" className="mx-auto max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto max-w-7xl page-x">
         <div className="mb-4 flex items-center justify-between">
-          <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <div className="eyebrow text-muted-foreground">
             Tools & tech we teach
           </div>
           <div className="hidden text-xs text-muted-foreground sm:block">
@@ -132,7 +132,7 @@ function Home() {
       </Reveal>
 
       {/* Bento categories */}
-      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto section-gap max-w-7xl page-x">
         <SectionHeading
           eyebrow="Catalogue"
           title="Four pathways, one campus."
@@ -181,7 +181,7 @@ function Home() {
       </Reveal>
 
       {/* Featured courses */}
-      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto section-gap max-w-7xl page-x">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
             eyebrow="Popular right now"
@@ -202,7 +202,7 @@ function Home() {
       </Reveal>
 
       {/* Why us */}
-      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto section-gap max-w-7xl page-x">
         <SectionHeading
           eyebrow="Why School of IT Skills"
           title="Learning built for outcomes, not just certificates."
@@ -244,7 +244,7 @@ function Home() {
       </Reveal>
 
       {/* All courses summary */}
-      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto section-gap max-w-7xl page-x">
         <SectionHeading
           eyebrow="Everything in one place"
           title="All courses at a glance."
@@ -258,7 +258,7 @@ function Home() {
       </Reveal>
 
       {/* CTA */}
-      <Reveal as="section" className="mx-auto mt-24 max-w-7xl px-6">
+      <Reveal as="section" className="mx-auto section-gap max-w-7xl page-x">
         <div className="corner-glow glow-ring notch relative overflow-hidden rounded-[2rem] bg-secondary p-10 text-secondary-foreground md:p-16">
           <div
             className="absolute inset-0 opacity-30 dot-field"
@@ -267,7 +267,7 @@ function Home() {
           />
           <div className="relative grid gap-8 md:grid-cols-[1.5fr_1fr] md:items-center">
             <div>
-              <h2 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">
+              <h2 className="text-balance text-5xl">
                 Ready to level up your IT career?
               </h2>
               <p className="mt-4 max-w-xl text-secondary-foreground/80">
