@@ -439,3 +439,35 @@
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
+
+/* ---- Layout rhythm: fluid, breakpoint-proof spacing ---- */
+
+/* Horizontal gutters that grow with the viewport instead of snapping. */
+@utility page-x {
+  padding-inline: clamp(1.15rem, 0.6rem + 2.6vw, 2.5rem);
+}
+
+/* Vertical gap between major sections. */
+@utility section-gap {
+  margin-top: clamp(3.75rem, 2rem + 6vw, 7.5rem);
+}
+
+/* Vertical padding inside a band/section. */
+@utility section-y {
+  padding-block: clamp(3rem, 1.6rem + 5vw, 6rem);
+}
+
+/* Eyebrow / label typography, monospaced for a premium editorial feel. */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: clamp(0.63rem, 0.60rem + 0.12vw, 0.72rem);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Comfortable measure for body copy at every width. */
+@utility measure {
+  max-width: 62ch;
+}
