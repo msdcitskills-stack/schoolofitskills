@@ -201,27 +201,40 @@
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
     -webkit-text-size-adjust: 100%;
-    /* Slightly zoomed-out layout: everything scales down from the root em */
-    font-size: 15px;
-  }
-  @media (min-width: 1280px) {
-    html { font-size: 14.5px; }
+    /* Root em stays fixed; the fluid type scale handles every breakpoint. */
+    font-size: 16px;
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    font-feature-settings: "cv11", "ss01";
+    font-variant-numeric: tabular-nums;
     overflow-x: hidden;
     overscroll-behavior-y: none;
   }
 
-  h1, h2, h3, h4, h5 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  /* Optical sizing: the larger the heading, the tighter the tracking. */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+  h1 { letter-spacing: -0.035em; line-height: 1.02; }
+  h2 { letter-spacing: -0.03em; line-height: 1.08; }
+  h3 { letter-spacing: -0.022em; line-height: 1.18; }
+  h4, h5, h6 { letter-spacing: -0.015em; line-height: 1.28; }
+  p { text-wrap: pretty; }
+
   ::selection { background: var(--color-primary); color: var(--color-primary-foreground); }
 
   img, svg, video, canvas { max-width: 100%; }
+
 
   /* Long pages: let the browser skip layout/paint for offscreen sections */
   main > section, main > div > section {
