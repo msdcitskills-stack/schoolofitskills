@@ -40,7 +40,7 @@ function Home() {
       {/* Hero */}
       <DotBackground className="relative overflow-hidden">
         <section className="mx-auto max-w-7xl page-x pb-[clamp(3rem,1.5rem+6vw,6rem)] pt-[clamp(1.5rem,0.5rem+3vw,4rem)]">
-          <div className="grid items-center gap-[clamp(2rem,1rem+4vw,3.5rem)] lg:grid-cols-[1.15fr_1fr]">
+          <div className="grid items-center gap-[clamp(2rem,1rem+4vw,3.5rem)] lg:items-start lg:grid-cols-[1.15fr_1fr]">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 eyebrow px-3 py-2 text-muted-foreground shadow-sm backdrop-blur">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary animate-glow-pulse" />
