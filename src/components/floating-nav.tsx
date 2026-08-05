@@ -35,7 +35,7 @@ export function FloatingNav() {
       }`}
     >
       <nav
-        className="glass flex max-w-[min(96vw,72rem)] items-center gap-1 rounded-full px-2 py-2 shadow-[0_10px_40px_-20px_color-mix(in_oklab,var(--color-foreground)_50%,transparent)]"
+        className="glass flex w-max max-w-[min(96vw,72rem)] flex-nowrap items-center gap-1 rounded-full px-2 py-2 shadow-[0_10px_40px_-20px_color-mix(in_oklab,var(--color-foreground)_50%,transparent)]"
         onMouseLeave={() => setHovered(null)}
       >
         <Link
@@ -48,17 +48,17 @@ export function FloatingNav() {
             School of IT Skills
           </span>
         </Link>
-        <div className="mx-1 hidden h-6 w-px bg-border md:block" />
-        <ul className="hidden items-center md:flex">
+        <div className="mx-1 hidden h-6 w-px shrink-0 bg-border md:block" />
+        <ul className="hidden min-w-0 flex-nowrap items-center md:flex">
           {links.map((l) => {
             const active =
               pathname === l.to || (l.to !== "/" && pathname.startsWith(l.to));
             return (
-              <li key={l.to} className="relative">
+              <li key={l.to} className="relative shrink-0">
                 <Link
                   to={l.to}
                   onMouseEnter={() => setHovered(l.to)}
-                  className={`relative z-10 block whitespace-nowrap rounded-full px-3 py-2 text-[0.82rem] font-medium transition-colors lg:px-4 lg:text-sm ${
+                  className={`relative z-10 block whitespace-nowrap rounded-full px-2.5 py-2 text-[0.8rem] font-medium transition-colors lg:px-3 lg:text-[0.875rem] ${
                     active || hovered === l.to
                       ? "text-secondary-foreground"
                       : "text-foreground/80 hover:text-foreground"
@@ -83,7 +83,7 @@ export function FloatingNav() {
             );
           })}
         </ul>
-        <div className="relative ml-1">
+        <div className="relative ml-1 shrink-0">
           <button
             onClick={() => setOpenTheme((v) => !v)}
             className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-secondary-foreground transition-transform hover:scale-110"
