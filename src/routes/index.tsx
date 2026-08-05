@@ -40,7 +40,7 @@ function Home() {
       {/* Hero */}
       <DotBackground className="relative overflow-hidden">
         <section className="mx-auto max-w-7xl page-x pb-[clamp(3rem,1.5rem+6vw,6rem)] pt-[clamp(1.5rem,0.5rem+3vw,4rem)]">
-          <div className="grid items-center gap-[clamp(2rem,1rem+4vw,3.5rem)] lg:items-start lg:grid-cols-[1.15fr_1fr]">
+          <div className="grid items-center gap-[clamp(2rem,1rem+4vw,3.5rem)] lg:grid-cols-[1.15fr_1fr]">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 eyebrow px-3 py-2 text-muted-foreground shadow-sm backdrop-blur">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary animate-glow-pulse" />
@@ -98,9 +98,7 @@ function Home() {
                 ))}
               </div>
             </div>
-            {/* Aligns the logo card's top edge with the "Empowering" headline:
-                eyebrow badge height (~2rem) + its 1.25rem bottom gap */}
-            <Parallax className="relative mt-0 lg:mt-[2.7rem]" strength={54}>
+            <Parallax className="relative lg:-mt-52" strength={54}>
               <div className="glass corner-glow relative rounded-[2rem] p-8 shadow-2xl animate-float">
                 <img
                   src={soisLogo.url}
