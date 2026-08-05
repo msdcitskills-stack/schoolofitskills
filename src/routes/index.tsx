@@ -98,7 +98,9 @@ function Home() {
                 ))}
               </div>
             </div>
-            <Parallax className="relative lg:-mt-52" strength={54}>
+            {/* Aligns the logo card's top edge with the "Empowering" headline:
+                eyebrow badge height (~2rem) + its 1.25rem bottom gap */}
+            <Parallax className="relative mt-0 lg:mt-[3.4rem]" strength={54}>
               <div className="glass corner-glow relative rounded-[2rem] p-8 shadow-2xl animate-float">
                 <img
                   src={soisLogo.url}
