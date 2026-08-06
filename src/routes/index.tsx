@@ -11,6 +11,7 @@ import { Card3D, Card3DItem } from "@/components/card-3d";
 import { TechMarquee } from "@/components/tech-marquee";
 import { CourseCard } from "@/components/course-card";
 import { SectionHeading } from "@/components/section-heading";
+import { PointerHighlight } from "@/components/pointer-highlight";
 import { courses, categoryMeta, coursesByCategory } from "@/data/courses";
 
 export const Route = createFileRoute("/")({
@@ -135,7 +136,12 @@ function Home() {
       <Reveal as="section" className="mx-auto section-gap max-w-7xl page-x">
         <SectionHeading
           eyebrow="Catalogue"
-          title="Four pathways, one campus."
+          title={
+            <>
+              Four pathways,{" "}
+              <PointerHighlight>one campus.</PointerHighlight>
+            </>
+          }
           description="Pick your track — every course ships with hands-on projects, mentor support and certification."
         />
         <div className="mt-10 grid gap-4 md:grid-cols-6 md:grid-rows-2">
