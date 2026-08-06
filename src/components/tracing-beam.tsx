@@ -109,22 +109,6 @@ export function TracingBeam() {
           vectorEffect="non-scaling-stroke"
         />
 
-        {/* Lit beam — soft halo copy */}
-        <path
-          d="M32 0 C 12 110, 52 190, 32 300 C 12 410, 52 490, 32 600 C 12 700, 44 760, 32 800"
-          fill="none"
-          stroke="url(#beam-lit)"
-          strokeWidth="4"
-          strokeOpacity="0.35"
-          filter="url(#beam-blur)"
-          vectorEffect="non-scaling-stroke"
-          style={{ strokeDasharray: "inherit" }}
-          ref={undefined}
-          pathLength={undefined}
-          strokeLinecap="round"
-          className="opacity-0"
-        />
-
         {/* Lit beam — crisp line */}
         <path
           ref={pathRef}
