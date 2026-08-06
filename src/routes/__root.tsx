@@ -16,6 +16,7 @@ import { FloatingDock } from "../components/floating-dock";
 import { SiteFooter } from "../components/site-footer";
 import { ThemeProvider } from "../components/theme-provider";
 import { ScrollProgress } from "../components/scroll-progress";
+import { TracingBeam } from "../components/tracing-beam";
 
 
 function NotFoundComponent() {
@@ -129,6 +130,8 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <ScrollProgress />
+        <TracingBeam />
+
         <FloatingNav />
         <main className="pt-24">
           <Outlet />
