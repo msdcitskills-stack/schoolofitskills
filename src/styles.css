@@ -365,6 +365,50 @@
   &:hover::before, &:hover::after { opacity: 0.85; }
 }
 
+/* Ultra-thin 1px border that glows on the right corner only */
+@utility edge-glow-right {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+      120% 160% at 100% 50%,
+      color-mix(in oklab, var(--color-glow) 95%, transparent) 0%,
+      color-mix(in oklab, var(--color-accent) 55%, transparent) 22%,
+      transparent 55%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.9;
+    transition: opacity 350ms ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 12%;
+    bottom: 12%;
+    right: -1px;
+    width: 2px;
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--color-glow) 90%, transparent);
+    filter: blur(4px);
+    opacity: 0.55;
+    transition: opacity 350ms ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  &:hover::before { opacity: 1; }
+  &:hover::after { opacity: 0.95; }
+}
+
 @utility glass {
   background: color-mix(in oklab, var(--color-card) 55%, transparent);
   backdrop-filter: blur(18px) saturate(140%);
