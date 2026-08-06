@@ -130,6 +130,8 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <ScrollProgress />
+        <TracingBeam />
+
         <FloatingNav />
         <main className="pt-24">
           <Outlet />
