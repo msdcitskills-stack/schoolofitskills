@@ -98,7 +98,7 @@ function Home() {
                 ))}
               </div>
             </div>
-            <Parallax className="relative lg:-mt-52" strength={54}>
+            <Parallax className="relative lg:-mt-64" strength={54}>
               <div className="glass corner-glow relative rounded-[2rem] p-8 shadow-2xl animate-float">
                 <img
                   src={soisLogo.url}
