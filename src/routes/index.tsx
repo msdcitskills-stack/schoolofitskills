@@ -11,6 +11,7 @@ import { Card3D, Card3DItem } from "@/components/card-3d";
 import { TechMarquee } from "@/components/tech-marquee";
 import { CourseCard } from "@/components/course-card";
 import { SectionHeading } from "@/components/section-heading";
+import { PointerHighlight } from "@/components/pointer-highlight";
 import { courses, categoryMeta, coursesByCategory } from "@/data/courses";
 
 export const Route = createFileRoute("/")({
