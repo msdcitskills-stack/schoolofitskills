@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, GraduationCap, Rocket, Sparkles, ShieldCheck, Award } from "lucide-react";
+import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import soisLogo from "@/assets/sois-logo.png.asset.json";
 import msdcLogo from "@/assets/msdc-logo.png.asset.json";
 import { DotBackground } from "@/components/dot-background";
@@ -35,6 +37,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const [logoHovered, setLogoHovered] = useState(false);
   const featured = coursesByCategory("professional").slice(0, 6);
   return (
     <div className="min-h-screen">
