@@ -101,7 +101,7 @@ export function TracingBeam() {
 
         {/* Track */}
         <path
-          d="M32 0 C 12 110, 52 190, 32 300 C 12 410, 52 490, 32 600 C 12 700, 44 760, 32 800"
+          d="M40 0 L40 250 L16 290 L16 520 L44 560 L44 800"
           fill="none"
           stroke="var(--color-border)"
           strokeWidth="1"
@@ -112,13 +112,13 @@ export function TracingBeam() {
         {/* Lit beam — crisp line */}
         <path
           ref={pathRef}
-          d="M32 0 C 12 110, 52 190, 32 300 C 12 410, 52 490, 32 600 C 12 700, 44 760, 32 800"
+          d="M40 0 L40 250 L16 290 L16 520 L44 560 L44 800"
           fill="none"
           stroke="none"
         />
         <path
           ref={litRef}
-          d="M32 0 C 12 110, 52 190, 32 300 C 12 410, 52 490, 32 600 C 12 700, 44 760, 32 800"
+          d="M40 0 L40 250 L16 290 L16 520 L44 560 L44 800"
           fill="none"
           stroke="url(#beam-lit)"
           strokeWidth="1.6"
@@ -126,6 +126,7 @@ export function TracingBeam() {
           vectorEffect="non-scaling-stroke"
           className="opacity-0 transition-opacity duration-300"
         />
+
 
         <circle ref={haloRef} r="16" fill="var(--color-glow)" filter="url(#beam-blur)" className="opacity-0" />
         <circle ref={headRef} r="3" fill="var(--color-glow)" className="opacity-0 transition-opacity duration-300" />
