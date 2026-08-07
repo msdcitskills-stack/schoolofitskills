@@ -9,7 +9,6 @@ export function TracingBeam() {
   const pathRef = useRef<SVGPathElement>(null);
   const litRef = useRef<SVGPathElement>(null);
   const headRef = useRef<SVGCircleElement>(null);
-  const haloRef = useRef<SVGCircleElement>(null);
 
   const tailRef = useRef<SVGPathElement>(null);
 
@@ -18,8 +17,7 @@ export function TracingBeam() {
     const lit = litRef.current;
     const tail = tailRef.current;
     const head = headRef.current;
-    const halo = haloRef.current;
-    if (!path || !lit || !tail || !head || !halo) return;
+    if (!path || !lit || !tail || !head) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const total = path.getTotalLength();
@@ -58,12 +56,8 @@ export function TracingBeam() {
 
       const pt = path.getPointAtLength(len);
       head.setAttribute("cx", `${pt.x}`);
-      head.setAttribute("cy", `${pt.y}`);
-      halo.setAttribute("cx", `${pt.x}`);
-      halo.setAttribute("cy", `${pt.y}`);
-      halo.setAttribute("r", `${7 + velocity * 120}`);
+      head.setAttribute("cy", `${pt.y}`);;;;
       head.style.opacity = visible;
-      halo.style.opacity = p > 0.002 ? `${0.32 + velocity * 2.5}` : "0";
 
       velocity *= 0.92;
       if (Math.abs(target - current) > 0.0004 || velocity > 0.001) {
@@ -145,7 +139,6 @@ export function TracingBeam() {
           className="opacity-0"
         />
 
-        <circle ref={haloRef} r="10" fill="var(--color-glow)" filter="url(#beam-blur)" className="opacity-0" />
         <circle ref={headRef} r="2.4" fill="var(--color-glow)" className="opacity-0 transition-opacity duration-300" />
       </svg>
     </div>
