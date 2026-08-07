@@ -11,17 +11,18 @@ export function TracingBeam() {
   const headRef = useRef<SVGCircleElement>(null);
   const haloRef = useRef<SVGCircleElement>(null);
 
+  const tailRef = useRef<SVGPathElement>(null);
+
   useEffect(() => {
     const path = pathRef.current;
     const lit = litRef.current;
+    const tail = tailRef.current;
     const head = headRef.current;
     const halo = haloRef.current;
-    if (!path || !lit || !head || !halo) return;
+    if (!path || !lit || !tail || !head || !halo) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const total = path.getTotalLength();
-    lit.style.strokeDasharray = `${total}`;
-    lit.style.strokeDashoffset = `${total}`;
 
     let raf = 0;
     let current = 0;
@@ -32,7 +33,7 @@ export function TracingBeam() {
     const readTarget = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       target = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-      velocity = Math.min(0.14, Math.abs(target - last) * 3);
+      velocity = Math.min(0.2, Math.abs(target - last) * 4);
       last = target;
     };
 
@@ -40,23 +41,31 @@ export function TracingBeam() {
       raf = 0;
       current += (target - current) * (reduced ? 1 : 0.12);
       const p = Math.min(1, Math.max(0, current));
-      // Beam length swells with scroll speed.
-      const glowLen = 0.06 + velocity;
       const len = total * p;
 
-      lit.style.strokeDashoffset = `${total - len}`;
-      lit.style.opacity = p > 0.002 ? "1" : "0";
+      // Comet: a short bright core trailing into a longer soft tail.
+      const coreLen = total * (0.035 + velocity * 0.5);
+      const tailLen = total * (0.12 + velocity * 2.2);
+
+      lit.style.strokeDasharray = `${coreLen} ${total}`;
+      lit.style.strokeDashoffset = `${coreLen - len}`;
+      tail.style.strokeDasharray = `${tailLen} ${total}`;
+      tail.style.strokeDashoffset = `${tailLen - len}`;
+
+      const visible = p > 0.002 ? "1" : "0";
+      lit.style.opacity = visible;
+      tail.style.opacity = p > 0.002 ? `${0.35 + velocity * 2}` : "0";
 
       const pt = path.getPointAtLength(len);
       head.setAttribute("cx", `${pt.x}`);
       head.setAttribute("cy", `${pt.y}`);
       halo.setAttribute("cx", `${pt.x}`);
       halo.setAttribute("cy", `${pt.y}`);
-      halo.setAttribute("r", `${8 + glowLen * 90}`);
-      head.style.opacity = p > 0.002 ? "1" : "0";
-      halo.style.opacity = p > 0.002 ? `${0.28 + velocity * 3}` : "0";
+      halo.setAttribute("r", `${7 + velocity * 120}`);
+      head.style.opacity = visible;
+      halo.style.opacity = p > 0.002 ? `${0.32 + velocity * 2.5}` : "0";
 
-      velocity *= 0.9;
+      velocity *= 0.92;
       if (Math.abs(target - current) > 0.0004 || velocity > 0.001) {
         raf = requestAnimationFrame(frame);
       }
@@ -77,6 +86,8 @@ export function TracingBeam() {
     };
   }, []);
 
+  const d = "M40 0 L40 250 L16 290 L16 520 L44 560 L44 800";
+
   return (
     <div
       aria-hidden
@@ -88,48 +99,54 @@ export function TracingBeam() {
         className="h-full w-full overflow-visible"
       >
         <defs>
-          <linearGradient id="beam-lit" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="var(--color-primary)" stopOpacity="0" />
-            <stop offset="18%" stopColor="var(--color-primary)" stopOpacity="0.85" />
-            <stop offset="55%" stopColor="var(--color-glow)" stopOpacity="1" />
-            <stop offset="100%" stopColor="var(--color-accent)" stopOpacity="0.95" />
-          </linearGradient>
-          <filter id="beam-blur" x="-200%" y="-50%" width="500%" height="200%">
-            <feGaussianBlur stdDeviation="4" />
+          <filter id="beam-blur" x="-300%" y="-100%" width="700%" height="300%">
+            <feGaussianBlur stdDeviation="5" />
+          </filter>
+          <filter id="beam-soft" x="-300%" y="-100%" width="700%" height="300%">
+            <feGaussianBlur stdDeviation="2" />
           </filter>
         </defs>
 
         {/* Track */}
         <path
-          d="M40 0 L40 250 L16 290 L16 520 L44 560 L44 800"
+          d={d}
           fill="none"
           stroke="var(--color-border)"
           strokeWidth="1"
-          strokeOpacity="0.55"
+          strokeOpacity="0.4"
           vectorEffect="non-scaling-stroke"
         />
 
-        {/* Lit beam — crisp line */}
+        {/* Measuring path */}
+        <path ref={pathRef} d={d} fill="none" stroke="none" />
+
+        {/* Soft tail */}
         <path
-          ref={pathRef}
-          d="M40 0 L40 250 L16 290 L16 520 L44 560 L44 800"
+          ref={tailRef}
+          d={d}
           fill="none"
-          stroke="none"
+          stroke="var(--color-primary)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          filter="url(#beam-soft)"
+          vectorEffect="non-scaling-stroke"
+          className="opacity-0"
         />
+
+        {/* Bright core */}
         <path
           ref={litRef}
-          d="M40 0 L40 250 L16 290 L16 520 L44 560 L44 800"
+          d={d}
           fill="none"
-          stroke="url(#beam-lit)"
-          strokeWidth="1.6"
+          stroke="var(--color-glow)"
+          strokeWidth="1.4"
           strokeLinecap="round"
           vectorEffect="non-scaling-stroke"
-          className="opacity-0 transition-opacity duration-300"
+          className="opacity-0"
         />
 
-
-        <circle ref={haloRef} r="16" fill="var(--color-glow)" filter="url(#beam-blur)" className="opacity-0" />
-        <circle ref={headRef} r="3" fill="var(--color-glow)" className="opacity-0 transition-opacity duration-300" />
+        <circle ref={haloRef} r="10" fill="var(--color-glow)" filter="url(#beam-blur)" className="opacity-0" />
+        <circle ref={headRef} r="2.4" fill="var(--color-glow)" className="opacity-0 transition-opacity duration-300" />
       </svg>
     </div>
   );
