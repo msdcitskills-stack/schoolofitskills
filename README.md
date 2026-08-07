@@ -15,8 +15,6 @@ https://x.com/SchoolofITSkill
 out mail: msdc.itskills@gmail.com
 phone No: +91 91879 74688
 
-This project was built with [Lovable](https://lovable.dev).
-
 **Live app**: https://schoolofitskills.lovable.app
 
 ## Build with Lovable
