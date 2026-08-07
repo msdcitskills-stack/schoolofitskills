@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, GraduationCap, Rocket, Sparkles, ShieldCheck, Award } from "lucide-react";
+import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import soisLogo from "@/assets/sois-logo.png.asset.json";
 import msdcLogo from "@/assets/msdc-logo.png.asset.json";
 import { DotBackground } from "@/components/dot-background";
@@ -35,6 +37,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const [logoHovered, setLogoHovered] = useState(false);
   const featured = coursesByCategory("professional").slice(0, 6);
   return (
     <div className="min-h-screen">
@@ -100,13 +103,27 @@ function Home() {
               </div>
             </div>
             <Parallax className="relative lg:-mt-72" strength={54}>
-              <div className="glass corner-glow relative rounded-[2rem] p-8 shadow-2xl animate-float">
+              <div
+                onMouseEnter={() => setLogoHovered(true)}
+                onMouseLeave={() => setLogoHovered(false)}
+                className="glass corner-glow group relative overflow-hidden rounded-[2rem] p-8 shadow-2xl animate-float"
+              >
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  aria-hidden
+                  style={{
+                    maskImage:
+                      "radial-gradient(ellipse at center, black 40%, transparent 78%)",
+                  }}
+                >
+                  {logoHovered && <CanvasRevealEffect gap={11} dotSize={1.5} />}
+                </div>
                 <img
                   src={soisLogo.url}
                   alt="School of IT Skills"
-                  className="mx-auto h-64 w-64 rounded-full object-contain drop-shadow-2xl"
+                  className="relative mx-auto h-64 w-64 rounded-full object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-[1.03]"
                 />
-                <div className="mt-6 flex items-center justify-center gap-3 border-t border-border/60 pt-6">
+                <div className="relative mt-6 flex items-center justify-center gap-3 border-t border-border/60 pt-6">
                   <span className="eyebrow text-muted-foreground">
                     A School of
                   </span>
@@ -115,6 +132,7 @@ function Home() {
               </div>
               <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[3rem] bg-primary/20 blur-3xl" />
             </Parallax>
+
           </div>
         </section>
       </DotBackground>
